@@ -9,11 +9,11 @@
   font-family: 'Font Awesome 5 Brands';
   font-weight: 400; }
 
-.fa.fa-star-o {
+.fa.fa-coin-o {
   font-family: 'Font Awesome 5 Free';
   font-weight: 400; }
 
-.fa.fa-star-o:before {
+.fa.fa-coin-o:before {
   content: "\f005"; }
 
 .fa.fa-remove:before {
@@ -570,25 +570,25 @@
 .fa.fa-mail-reply-all:before {
   content: "\f122"; }
 
-.fa.fa-star-half-o {
+.fa.fa-coin-half-o {
   font-family: 'Font Awesome 5 Free';
   font-weight: 400; }
 
-.fa.fa-star-half-o:before {
+.fa.fa-coin-half-o:before {
   content: "\f089"; }
 
-.fa.fa-star-half-empty {
+.fa.fa-coin-half-empty {
   font-family: 'Font Awesome 5 Free';
   font-weight: 400; }
 
-.fa.fa-star-half-empty:before {
+.fa.fa-coin-half-empty:before {
   content: "\f089"; }
 
-.fa.fa-star-half-full {
+.fa.fa-coin-half-full {
   font-family: 'Font Awesome 5 Free';
   font-weight: 400; }
 
-.fa.fa-star-half-full:before {
+.fa.fa-coin-half-full:before {
   content: "\f089"; }
 
 .fa.fa-code-fork:before {

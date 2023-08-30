@@ -3,7 +3,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>Копи на мечту</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('storage/app/public/favicons/' . 'favicon16' . '.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="/storage/app/public/favicons/favicon32.png">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <!-- Google Font: Source Sans Pro -->

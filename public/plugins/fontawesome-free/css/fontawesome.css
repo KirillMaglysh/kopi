@@ -3717,22 +3717,22 @@ readers do not read off random characters that represent icons */
 .fa-stamp:before {
   content: "\f5bf"; }
 
-.fa-star:before {
+.fa-coin:before {
   content: "\f005"; }
 
-.fa-star-and-crescent:before {
+.fa-coin-and-crescent:before {
   content: "\f699"; }
 
-.fa-star-half:before {
+.fa-coin-half:before {
   content: "\f089"; }
 
-.fa-star-half-alt:before {
+.fa-coin-half-alt:before {
   content: "\f5c0"; }
 
-.fa-star-of-david:before {
+.fa-coin-of-david:before {
   content: "\f69a"; }
 
-.fa-star-of-life:before {
+.fa-coin-of-life:before {
   content: "\f621"; }
 
 .fa-staylinked:before {
