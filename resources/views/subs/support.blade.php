@@ -3,9 +3,8 @@
 @section('content')
     @include('public.menu')
     <!-- /.navbar -->
-    <head>
-        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    </head>
+    <link type="text/css" rel="stylesheet" href="{{ asset('css/app.css') }}">
+
     <div class="mt-5 pt-5">
         <h1 class="mt-5 pt-5 text-center">Наши мечтатели</h1>
     </div>
@@ -13,7 +12,12 @@
     <div class="mt-4 pt-4">
         <form class="search-form">
             <input class="search-input" type="text" placeholder="Скиллы для тебя...">
-            <button class="search-button fa-search" type="submit"></button>
+            <svg class="svg-inline--fa fa-magnifying-glass search-button" type="submit" aria-hidden="true"
+                 focusable="false" data-prefix="fas" data-icon="magnifying-glass" role="img"
+                 xmlns="http://www.w3.org/2000/svg" data-fa-i2svg="" viewBox="-128 -128 768 768">
+                <path fill="currentColor"
+                      d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"></path>
+            </svg>
         </form>
     </div>
 

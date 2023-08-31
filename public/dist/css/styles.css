@@ -11071,8 +11071,5 @@ html {
     background: #7BA7AB;
     border-radius: 0 5px 5px 0;
     cursor: pointer;
+    align-content: center;
 }
-/*.search-button:before {*/
-/*    font-size: 16px;*/
-/*    color: #F9F0DA;*/
-/*}*/
