@@ -11073,3 +11073,7 @@ html {
     cursor: pointer;
     align-content: center;
 }
+
+.btn-margined {
+    margin: 10px 10px 10px 10px;
+}

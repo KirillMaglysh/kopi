@@ -21,13 +21,13 @@
         </form>
     </div>
 
-    <div class="container mt-5 pt-5">
+    <div class="container mt-2 pt-2">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
             @foreach($data as $card)
                 {{--                    {{ dd($card) }}--}}
                 @if ($card['moderation'])
                     <div class="col pt-5">
-                        <div class="card shadow-sm" style="max-width: 70rem;">
+                        <div class="card shadow-sm" style="max-width: 120rem;">
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
@@ -36,13 +36,7 @@
                                              alt="Card image cap">
                                     </div>
                                     <div class="col">
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <h5>{{ $card['skills'] }}</h5>
-                                            @if(!$card['moderation'])
-                                                <a href="{{ route('cardSuccess', ['id' => $card['id']]) }}"
-                                                   class="btn btn-sm btn-success">Подтвердить</a>
-                                            @endif
-                                        </div>
+                                        <p class="card-text">{{ $card['skills'] }}</p>
                                         <p class="card-text">{{ $card['gratitude'] }}</p>
                                         <p class="card-text">{{ $card['aim'] }}</p>
                                         <p class="card-text">{{ $card['description'] }}</p>

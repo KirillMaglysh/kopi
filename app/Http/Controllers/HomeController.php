@@ -41,7 +41,7 @@ class HomeController extends Controller
         $data = [];
         if ($user['fileSelf']) {
             $data['fileSelf'] = $user['fileSelf'];
-         }
+        }
         $error = $request->error;
         return view('admin.self', compact('error', 'moderation', 'data'));
     }
@@ -84,6 +84,12 @@ class HomeController extends Controller
         return view('admin.moderation', compact('data'));
     }
 
+    public function info()
+    {
+        $userId = auth()->user()->id;
+        return view('admin.info', compact('userId'));
+    }
+
     public function card()
     {
         $userId = auth()->user()->id;
@@ -109,6 +115,20 @@ class HomeController extends Controller
         return redirect()->route('moderation');
     }
 
+    public function myDreamers(Request $request)
+    {
+        $info = $request->info;
+        $userId = auth()->user()->id;
+        $dreamersIds = DB::table('users')->where('id', $userId)->first()->dreamersId;
+        $cards = [];
+        if ($dreamersIds) {
+            $cards = DB::table('card')->whereIn('id', $dreamersIds)->get();
+        }
+        $count = count($cards);
+
+        return view('admin.myDreamers', compact('cards', 'info', 'count'));
+    }
+
     public function myCard(Request $request)
     {
         $info = $request->info;
@@ -122,19 +142,12 @@ class HomeController extends Controller
     {
         $card = Card::where('id', $id)->first();
         Card::where('id', $id)->update([
-                'skills' => $card['skills'],
-                'gratitude' => $card['gratitude'],
-                'for_what' => $card['for_what'],
-                'aim' => $card['aim'],
-                'description' => $card['description'],
-                'photo_card' => $card['photo_card'],
-                'link_tg' => $card['link_tg'],
-                'link_vk' => $card['link_vk'],
-                'photo_qr' => $card['photo_qr'],
-                'summa' => $card['summa'],
-                'phone_number' => $card['phone_number'],
-                'moderation' => true,
-            ]);
+            'dream_name' => $card['dream_name'],
+            'description' => $card['description'],
+            'photo_card' => $card['photo_card'],
+            'summa' => $card['summa'],
+            'moderation' => true,
+        ]);
         return redirect()->route('cardItem', ['id' => $id]);
     }
 
@@ -142,19 +155,13 @@ class HomeController extends Controller
     {
         $userId = auth()->user()->id;
         $data = $request->input();
+        $user = DB::table('users')->where('id', $userId);
         $data['photo'] = $request->file('photo');
-        $data['qr'] = $request->file('qr');
 
         $rules = [
-            'skills' => 'required|string|max:30',
-            'gratitude' => 'required|string|max:100',
-            'for_what' => 'required|string|max:50',
-            'aim' => 'required|string|max:50',
+            'dream_name' => 'required|string|max:50',
             'description' => 'required|string|max:50',
             'photo' => 'required|file|mimes:jpg',
-            'link_tg' => 'required|string|',
-            'link_vk' => 'required|string|',
-            'qr' => 'required|file|mimes:jpg',
             'userId' => 'required|integer|',
             'summa' => 'required|integer|',
         ];
@@ -168,14 +175,7 @@ class HomeController extends Controller
         $hashPhotoCard = str_replace('/', 'a', $hashPhotoCard);
         $data['photo'] = $photoCardFile;
         Storage::disk('public')->putFileAs('cardPhotos', $photoCardFile, $hashPhotoCard . '.jpg');
-
-        $photoQrFile = $request->file('qr');
-        $hashQrCard = Hash::make($photoQrFile);
-        $hashQrCard = str_replace('/', 'a', $hashQrCard);
-        $data['qr'] = $photoQrFile;
-        Storage::disk('public')->putFileAs('cardQrs', $photoQrFile, $hashQrCard . '.jpg');
         $data['photo'] = $hashPhotoCard;
-        $data['qr'] = $hashQrCard;
 
         Card::saveUserCard($data);
         if (auth()->user()->id === 1) {

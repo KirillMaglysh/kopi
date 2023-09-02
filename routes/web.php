@@ -33,6 +33,8 @@ Route::get('/selfSuccess/{id}', [App\Http\Controllers\HomeController::class, 'se
 Route::post('/selfSave', [App\Http\Controllers\HomeController::class, 'selfSave'])->name('selfSave');
 Route::get('/card', [App\Http\Controllers\HomeController::class, 'card'])->name('card');
 Route::get('/myCard', [App\Http\Controllers\HomeController::class, 'myCard'])->name('myCard');
+Route::get('/info', [App\Http\Controllers\HomeController::class, 'info'])->name('info');
+Route::get('/myDreamers', [App\Http\Controllers\HomeController::class, 'myDreamers'])->name('myDreamers');
 Route::get('/cardSuccess/{id}', [App\Http\Controllers\HomeController::class, 'cardSuccess'])->name('cardSuccess');
 Route::get('/card/{id}', [App\Http\Controllers\HomeController::class, 'cardItem'])->name('cardItem');
 Route::get('/cardDelete/{id}', [App\Http\Controllers\HomeController::class, 'cardDelete'])->name('cardDelete');

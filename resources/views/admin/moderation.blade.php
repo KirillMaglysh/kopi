@@ -24,8 +24,6 @@
                                     </div>
                                 </div>
                                 <h5>{{ $item['skills'] }}</h5>
-                                <p class="card-text">{{ $item['gratitude'] }}</p>
-                                <p class="card-text">{{ $item['aim'] }}</p>
                                 <p class="card-text">{{ $item['description'] }}</p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">

@@ -45,16 +45,9 @@ class Card extends Authenticatable
     public static function saveUserCard($data): bool
     {
         return DB::table('card')->insert([
-            'skills' => $data['skills'],
-            'gratitude' => $data['gratitude'],
-            'for_what' => $data['for_what'],
-            'aim' => $data['aim'],
+            'dream_name' => $data['dream_name'],
             'description' => $data['description'],
             'photo_card' => $data['photo'],
-            'link_tg' => $data['link_tg'],
-            'link_vk' => $data['link_vk'],
-            'photo_qr' => $data['qr'],
-            'phone_number' => $data['phone_number'],
             'user_id' => $data['userId'],
             'summa' => $data['summa'],
         ]);

@@ -33,6 +33,19 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+    protected $contacts = [
+        'tg_link',
+        'vk_link',
+        'phone'
+    ];
+
+    protected $payment = [
+        'qr_photo'
+    ];
+
+    protected $skills = [];
+    public $dreamersId = [];
+
     /**
      * The attributes that should be cast.
      *
@@ -40,5 +53,7 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'skills' => 'array',
+        'dreamersId' => 'array'
     ];
 }

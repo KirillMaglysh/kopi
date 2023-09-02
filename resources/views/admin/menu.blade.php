@@ -3,22 +3,28 @@
         <!-- Add icons to the links using the .nav-icon class
              with font-awesome or any other icon font library -->
         <li class="nav-item">
+            <a href="{{ route('myCard') }}" class="nav-link {{ url()->current() === route('myCard') ? 'active' : ''}}">
+                <i class="nav-icon fa-solid fas fa-database"></i>
+                <p>
+                    Мои карточки
+                </p>
+            </a>
+            <a href="{{ route('myDreamers') }}" class="nav-link {{ url()->current() === route('myDreamers') ? 'active' : ''}}">
+                <i class="nav-icon fa-solid fas fa-heart"></i>
+                <p>
+                    Мои мечтатели
+                </p>
+            </a>
             <a href="{{ route('self') }}" class="nav-link {{ url()->current() === route('self') ? 'active' : ''}}">
                 <i class="nav-icon fa-solid fas fa-question"></i>
                 <p>
                     Самозанятость
                 </p>
             </a>
-            <a href="{{ route('card') }}" class="nav-link {{ url()->current() === route('card') ? 'active' : ''}}">
-                <i class="nav-icon fa-solid fas fa-list"></i>
+            <a href="{{ route('info') }}" class="nav-link {{ url()->current() === route('info') ? 'active' : ''}}">
+                <i class="nav-icon fa-solid fas fa-pen"></i>
                 <p>
-                    Создание карточки
-                </p>
-            </a>
-            <a href="{{ route('myCard') }}" class="nav-link {{ url()->current() === route('myCard') ? 'active' : ''}}">
-                <i class="nav-icon fa-solid fas fa-database"></i>
-                <p>
-                    Мои карточки
+                    Личная информаци
                 </p>
             </a>
             @if (auth()->user()->id === 1)
