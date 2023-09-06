@@ -30,15 +30,17 @@ Route::get('/selfModeration', [App\Http\Controllers\HomeController::class, 'self
 Route::get('/selfSuccess/{id}', [App\Http\Controllers\HomeController::class, 'selfSuccess'])->name('selfSuccess');
 
 
-Route::post('/selfSave', [App\Http\Controllers\HomeController::class, 'selfSave'])->name('selfSave');
-Route::get('/card', [App\Http\Controllers\HomeController::class, 'card'])->name('card');
-Route::get('/myCard', [App\Http\Controllers\HomeController::class, 'myCard'])->name('myCard');
-Route::get('/info', [App\Http\Controllers\HomeController::class, 'info'])->name('info');
-Route::get('/myDreamers', [App\Http\Controllers\HomeController::class, 'myDreamers'])->name('myDreamers');
-Route::get('/cardSuccess/{id}', [App\Http\Controllers\HomeController::class, 'cardSuccess'])->name('cardSuccess');
-Route::get('/card/{id}', [App\Http\Controllers\HomeController::class, 'cardItem'])->name('cardItem');
-Route::get('/cardDelete/{id}', [App\Http\Controllers\HomeController::class, 'cardDelete'])->name('cardDelete');
+Route::get('/card', [App\Http\Controllers\LKControllers\MyCardController::class, 'card'])->name('card');
+Route::get('/myCard', [App\Http\Controllers\LKControllers\MyCardController::class, 'myCard'])->name('myCard');
+Route::get('/info', [App\Http\Controllers\LKControllers\InfoController::class, 'info'])->name('info');
+Route::get('/myDreamers', [App\Http\Controllers\LKControllers\MyDreamersController::class, 'myDreamers'])->name('myDreamers');
+Route::get('/cardSuccess/{id}', [App\Http\Controllers\LKControllers\MyCardController::class, 'cardSuccess'])->name('cardSuccess');
+Route::get('/card/{id}', [App\Http\Controllers\LKControllers\MyCardController::class, 'cardItem'])->name('cardItem');
+Route::get('/cardDelete/{id}', [App\Http\Controllers\LKControllers\MyCardController::class, 'cardDelete'])->name('cardDelete');
 
 Route::get('/personal', [App\Http\Controllers\HomeController::class, 'personalData'])->name('personal');
 Route::get('/moderation', [App\Http\Controllers\HomeController::class, 'moderation'])->name('moderation');
-Route::post('/cardSave', [App\Http\Controllers\HomeController::class, 'save'])->name('card.save');
+
+Route::post('/cardSave', [App\Http\Controllers\LKControllers\NewCardController::class, 'save'])->name('card.save');
+Route::post('/infoSave', [App\Http\Controllers\LKControllers\InfoController::class, 'save'])->name('info.save');
+Route::post('/selfSave', [App\Http\Controllers\HomeController::class, 'selfSave'])->name('selfSave');

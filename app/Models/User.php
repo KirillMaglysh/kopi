@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\DB;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
@@ -33,17 +34,15 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-    protected $contacts = [
+    protected $info = [
         'tg_link',
         'vk_link',
-        'phone'
+        'qr_photo',
+        'self_photo'
     ];
 
-    protected $payment = [
-        'qr_photo'
-    ];
-
-    protected $skills = [];
+    protected $skill_names = [];
+    protected $skill_prices = [];
     public $dreamersId = [];
 
     /**
@@ -56,4 +55,16 @@ class User extends Authenticatable
         'skills' => 'array',
         'dreamersId' => 'array'
     ];
+
+    public static function updateUserInfo($data): bool
+    {
+        return DB::table('users')->where('id', $data['userId'])->update([
+            'tg_link' => $data['tg_link'],
+            'vk_link' => $data['vk_link'],
+            'self_photo' => $data['self_photo'],
+            'qr_photo' => $data['qr_photo'],
+            'skill_names' => $data['skill_names'],
+            'skill_prices' => $data['skill_prices'],
+        ]);
+    }
 }

@@ -24,7 +24,7 @@
             <a href="{{ route('info') }}" class="nav-link {{ url()->current() === route('info') ? 'active' : ''}}">
                 <i class="nav-icon fa-solid fas fa-pen"></i>
                 <p>
-                    Личная информаци
+                    Личная информация
                 </p>
             </a>
             @if (auth()->user()->id === 1)
