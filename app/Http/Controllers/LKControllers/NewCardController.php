@@ -45,7 +45,7 @@ class NewCardController extends Controller
             return view('admin.card', compact('errors', 'userId'));
         }
         Utilities::hashPhoto($request, 'photo', 'cardPhotos', $data);
-        Card::saveUserCard($data);
+        Card::insert($data);
         if (auth()->user()->id === 1) {
             $info = 'Твоя карточка принята на модерацию! Когда она ее пройдет, то станет зеленой!';
             return redirect()->route('myCard', compact('info'));

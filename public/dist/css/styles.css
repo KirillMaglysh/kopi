@@ -12766,3 +12766,24 @@ html {
 .skill-table {
     padding: 20px 0 0 0;
 }
+
+.partner-card {
+    display: inline-block;
+    width: 200px;
+    text-align: center;
+    margin: 10px;
+    padding: 10px;
+    background-color: #fff;
+}
+
+.partner-card img {
+    width: 150px;
+    height: auto;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.partner-card button {
+    display: block;
+    margin: 0 auto;
+}

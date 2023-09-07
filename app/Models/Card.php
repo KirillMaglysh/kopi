@@ -42,7 +42,7 @@ class Card extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public static function saveUserCard($data): bool
+    public static function insert($data): bool
     {
         return DB::table('card')->insert([
             'dream_name' => $data['dream_name'],

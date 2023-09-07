@@ -3,7 +3,7 @@
 @section('content')
     <div class="row row-cols-12 row-cols-sm-12 row-cols-md-12 g-3">
         <div class="col">
-            @if (auth()->user()->id === 1)
+            @if (auth()->user()->id === _ADMIN_)
                 <div class="card shadow-sm {{ !$card['moderation'] ? 'bg-danger' : 'bg-success'  }}" style="max-width: 70rem;">
                 <div class="card-body">
                     <div class="row">
