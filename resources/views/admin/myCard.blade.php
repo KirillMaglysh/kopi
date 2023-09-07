@@ -20,9 +20,9 @@
                 </ul>
             </div>
         @endif
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <div class="d-flex justify-content-center bd-highlight mb-3">
             @foreach($cards as $item)
-                <div class="col">
+                <div class="p-2 bd-highlight">
                     <div class="card shadow-sm {{ !$item['moderation'] ? 'bg-danger' : 'bg-success'  }}"
                          style="max-width: 70rem;">
                         <div class="card-body">

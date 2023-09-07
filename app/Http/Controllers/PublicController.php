@@ -3,10 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Card;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Validator;
+use App\Models\Partner;
 
 
 class PublicController extends Controller
@@ -29,7 +26,8 @@ class PublicController extends Controller
 
     public function show()
     {
-        return view('welcome');
+        $partners = Partner::all();
+        return view('welcome', compact('partners'));
     }
 
     public function support()

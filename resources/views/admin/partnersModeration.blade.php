@@ -4,13 +4,18 @@
 @section('content')
     <div class="row">
         <link rel="stylesheet" href="{{ asset('dist/css/styles.css') }}">
-        <div class="col-auto mr-auto btn-margined">
-            <button type="submit" class="btn btn-dark" onclick="window.location='{{ url("newPartner") }}'">Добавить
-            </button>
+
+        <div class="d-flex justify-content-center bd-highlight mb-3">
+            <div class="p-2 bd-highlight">
+                <button type="submit" class="btn btn-dark" style="font-size: 18px" onclick="window.location='{{ url("newPartner") }}'">
+                    Добавить
+                </button>
+            </div>
         </div>
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-3">
+
+        <div class="d-flex justify-content-center bd-highlight mb-3">
             @foreach($partners as $item)
-                <div class="col">
+                <div class="p-2 bd-highlight">
                     <div class="row">
                         <div class="partner-card shadow-sm" style="max-width: 150rem">
                             <div class="row">
