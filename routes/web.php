@@ -19,7 +19,8 @@ use Illuminate\Support\Facades\Route;
 //});
 
 Route::get('/', [App\Http\Controllers\PublicController::class, 'show'])->name('home');
-Route::get('/support', [App\Http\Controllers\PublicController::class, 'support'])->name('support');
+Route::get('/support', [App\Http\Controllers\OurDreamersController::class, 'dreamersNoFilter'])->name('support');
+Route::get('/support/searchSkills', [App\Http\Controllers\OurDreamersController::class, 'dreamersFilter'])->name('search.skills');
 
 
 Auth::routes();

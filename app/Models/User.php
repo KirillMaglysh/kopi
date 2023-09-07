@@ -69,4 +69,16 @@ class User extends Authenticatable
             'skill_prices' => $data['skill_prices'],
         ]);
     }
+
+    public static function haveSkill($user_id, string $pattern): bool
+    {
+        $names = json_decode(DB::table('users')->find($user_id, 'skill_names')->skill_names);
+        foreach ($names as $name) {
+            if (str_contains(strtolower($name), strtolower($pattern))) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }

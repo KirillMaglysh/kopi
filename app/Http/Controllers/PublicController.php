@@ -29,10 +29,4 @@ class PublicController extends Controller
         $partners = Partner::all();
         return view('welcome', compact('partners'));
     }
-
-    public function support()
-    {
-        $data = Card::all();
-        return view('subs/support', compact('data'));
-    }
 }

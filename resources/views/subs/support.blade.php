@@ -8,10 +8,15 @@
     <div class="mt-5 pt-5">
         <h1 class="mt-5 pt-5 text-center">Наши мечтатели</h1>
     </div>
-
     <div class="mt-4 pt-4">
-        <form class="search-form">
-            <input class="search-input" type="text" placeholder="Скиллы для тебя...">
+        <form class="search-form" method="get" action="{{route('search.skills')}}">
+            @if($is_filter)
+                <input class="form-control search-input" type="text" placeholder="Скилл для тебя..." id="search_skill"
+                       name="search_skill" value="{{$pattern}}">
+            @else
+                <input class="form-control search-input" type="text" placeholder="Скилл для тебя..." id="search_skill"
+                       name="search_skill">
+            @endif
             <svg class="svg-inline--fa fa-magnifying-glass search-button" type="submit" aria-hidden="true"
                  focusable="false" data-prefix="fas" data-icon="magnifying-glass" role="img"
                  xmlns="http://www.w3.org/2000/svg" data-fa-i2svg="" viewBox="-128 -128 768 768">
@@ -23,30 +28,30 @@
 
     <div class="container mt-2 pt-2">
         <div class="d-flex justify-content-center bd-highlight mb-3" style="flex-wrap: wrap">
-            @foreach($data as $card)
+            @foreach($cards as $card)
                 {{--                    {{ dd($card) }}--}}
-                @if ($card['moderation'])
+                @if ($card->moderation)
                     <div class="p-2 bd-highlight">
                         <div class="card shadow-sm" style="max-width: 400px; height: 400px">
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
                                         <img class="card-img-left" width="150px"
-                                             src="{{ asset('storage/cardPhotos/' . $card['photo_card'] . '.jpg') }}"
+                                             src="{{ asset('storage/cardPhotos/' . $card->photo_card . '.jpg') }}"
                                              alt="Card image cap" style="max-height: 350px">
                                     </div>
-                                    <div class="col">
-                                        <p class="card-text">{{ $card['skills'] }}</p>
-                                        <p class="card-text">{{ $card['gratitude'] }}</p>
-                                        <p class="card-text">{{ $card['aim'] }}</p>
-                                        <p class="card-text">{{ $card['description'] }}</p>
+                                    {{--<div class="col">
+                                        <p class="card-text">{{ $card->skills }}</p>
+                                        <p class="card-text">{{ $card->gratitude }}</p>
+                                        <p class="card-text">{{ $card->aim }}</p>
+                                        <p class="card-text">{{ $card->description }}</p>
                                         <div class="d-flex justify-content-between align-items-center">
                                             <div class="btn-group">
                                                 <button href="{{ route('cardItem', ['id' => 1]) }}" type="button"
                                                         class="btn btn-sm btn-secondary">Подробнее
                                                 </button>
                                             </div>
-                                            <a href="{{ $card['link_tg'] }}" target="_blank">
+                                            <a href="{{ $card->link_tg }}" target="_blank">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                      fill="currentColor" class="bi bi-telegram" viewBox="0 0 16 16">
                                                     <path
@@ -58,7 +63,7 @@
                                                 data-bs-target="#exampleModal">
                                             QR
                                         </button>
-                                        <p class="mt-1">Необходимая сумма: {{ $card['summa'] }}</p>
+                                        <p class="mt-1">Необходимая сумма: {{ $card->summa }}</p>
                                         <!-- Modal -->
                                         <div class="modal fade" id="exampleModal" tabindex="-1"
                                              aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -72,7 +77,7 @@
                                                     </div>
                                                     <div class="modal-body" align="center">
                                                         <img class="card-img-left mt-3" width="300px"
-                                                             src="{{ asset('storage/cardQrs/' . $card['photo_qr'] . '.jpg') }}"
+                                                             src="{{ asset('storage/cardQrs/' . $card->photo_qr . '.jpg') }}"
                                                              alt="Card image cap">
                                                     </div>
                                                     <div class="modal-footer">
@@ -83,7 +88,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div>--}}
                                 </div>
                             </div>
                         </div>
