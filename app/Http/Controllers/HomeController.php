@@ -77,7 +77,7 @@ class HomeController extends Controller
 
     public function moderation()
     {
-        if (auth()->user()->id !== 1) {
+        if (auth()->user()->id !== _ADMIN_) {
             abort(403);
         }
         $data = Card::all();

@@ -22,18 +22,18 @@
     </div>
 
     <div class="container mt-2 pt-2">
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <div class="d-flex justify-content-center bd-highlight mb-3" style="flex-wrap: wrap">
             @foreach($data as $card)
                 {{--                    {{ dd($card) }}--}}
                 @if ($card['moderation'])
-                    <div class="col pt-5">
-                        <div class="card shadow-sm" style="max-width: 120rem;">
+                    <div class="p-2 bd-highlight">
+                        <div class="card shadow-sm" style="max-width: 400px; height: 400px">
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
                                         <img class="card-img-left" width="150px"
                                              src="{{ asset('storage/cardPhotos/' . $card['photo_card'] . '.jpg') }}"
-                                             alt="Card image cap">
+                                             alt="Card image cap" style="max-height: 350px">
                                     </div>
                                     <div class="col">
                                         <p class="card-text">{{ $card['skills'] }}</p>

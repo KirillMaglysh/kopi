@@ -29,7 +29,7 @@
                         @if ($user->self_photo)
                             <img id="current_photo" class="card-img-left" width="100px"
                                  src="{{ asset('storage/selfPhoto/' . $user->self_photo . '.jpg') }}"
-                                 alt="CurrentPhoto.jpg">
+                                 alt="CurrentPhoto.jpg" style="margin-bottom: 10px">
                         @endif
 
                         <input placeholder="" type="file" class="form-control" name="self_photo" id="self_photo">
@@ -53,7 +53,7 @@
                         @if ($user->self_photo)
                             <img id="current_photo" class="card-img-left" width="100px"
                                  src="{{ asset('storage/cardQrs/' . $user->qr_photo . '.jpg') }}"
-                                 alt="CurrentPhoto.jpg">
+                                 alt="CurrentPhoto.jpg" style="margin-bottom: 10px">
                         @endif
                         <input placeholder="" type="file" class="form-control" name="qr_photo" id="qr_photo">
                     </div>

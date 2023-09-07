@@ -5,9 +5,10 @@
     <div class="row">
         <link rel="stylesheet" href="{{ asset('dist/css/styles.css') }}">
 
-        <div class="d-flex justify-content-center bd-highlight mb-3">
+        <div class="d-flex justify-content-center bd-highlight mb-3" style="flex-wrap: wrap">
             <div class="p-2 bd-highlight">
-                <button type="submit" class="btn btn-dark" style="font-size: 18px" onclick="window.location='{{ url("newPartner") }}'">
+                <button type="submit" class="btn btn-dark" style="font-size: 18px"
+                        onclick="window.location='{{ url("newPartner") }}'">
                     Добавить
                 </button>
             </div>

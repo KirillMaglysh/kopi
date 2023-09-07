@@ -1,7 +1,7 @@
 <section class="page-section" id="partners">
     <h1 style="display:flex; justify-content: center; margin-bottom: 30px">Наши партнеры</h1>
     <div class="container">
-        <div class="d-flex justify-content-center bd-highlight mb-3">
+        <div class="d-flex justify-content-center bd-highlight mb-3" style="flex-wrap: wrap">
             @foreach($partners as $item)
                 <div class="p-2 bd-highlight">
                     <div class="row">

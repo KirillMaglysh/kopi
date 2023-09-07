@@ -43,7 +43,8 @@
                         <input placeholder="" type="text" class="form-control" id="summa" name="summa">
                         <p>Число без знаков, например: 100000</p>
                     </div>
-                    <button type="submit" class="btn btn-primary">Сохранить</button>
+
+                    <button type="submit" class="btn btn-primary" style="margin-bottom: 30px">Сохранить</button>
                 </form>
             </div>
         </div>

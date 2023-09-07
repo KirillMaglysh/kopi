@@ -34,7 +34,7 @@ class NewCardController extends Controller
 
         $rules = [
             'dream_name' => 'required|string|max:50',
-            'description' => 'required|string|max:50',
+            'description' => 'required|string|max:500',
             'photo' => 'required|file|mimes:jpg',
             'userId' => 'required|integer|',
             'summa' => 'required|integer|',
@@ -44,7 +44,7 @@ class NewCardController extends Controller
             $errors = $validator->errors();
             return view('admin.card', compact('errors', 'userId'));
         }
-        Utilities::hashPhoto($request, 'photo', 'cardPhotos', $data);
+        $data = Utilities::hashPhoto($request, 'photo', 'cardPhotos', $data);
         Card::insert($data);
         if (auth()->user()->id === 1) {
             $info = 'Твоя карточка принята на модерацию! Когда она ее пройдет, то станет зеленой!';
