@@ -43,6 +43,30 @@ class InfoController extends Controller
             return view('admin.info', compact('errors', 'userId', 'user'));
         }
 
+        $data = $this->checkNullable($data, $request, $user);
+        $data = $this->readSkills($data);
+
+        User::updateUserInfo($data);
+        $info = 'Сохранено';
+        return redirect()->route('info',
+            compact('info', 'data'));
+    }
+
+    public function info()
+    {
+        $userId = auth()->user()->id;
+        $user = DB::table('users')->find($userId, ['tg_link', 'vk_link', 'self_photo', 'qr_photo', 'skill_names', 'skill_prices']);
+        return view('admin.info', compact('userId', 'user'));
+    }
+
+    /**
+     * @param mixed $data
+     * @param Request $request
+     * @param mixed $user
+     * @return array|mixed
+     */
+    private function checkNullable(mixed $data, Request $request, mixed $user): mixed
+    {
         if ($data['self_photo']) {
             $data = Utilities::hashPhoto($request, 'self_photo', 'selfPhoto', $data);
         } else {
@@ -58,10 +82,18 @@ class InfoController extends Controller
         if (!$data['vk_link']) {
             $data['vk_link'] = $user->vk_link;
         }
+        return $data;
+    }
 
+    /**
+     * @param mixed $data
+     * @return mixed
+     */
+    public function readSkills(mixed $data): mixed
+    {
         $data['skill_names'] = array();
         $data['skill_prices'] = array();
-        for ($i = 0; $i < 16; $i++) {
+        for ($i = 0; $i < 32; $i++) {
             if (array_key_exists('skill_' . $i . '_name', $data)) {
                 $skill_name = $data['skill_' . $i . '_name'];
                 $skill_price = $data['skill_' . $i . '_price'];
@@ -71,17 +103,6 @@ class InfoController extends Controller
                 }
             }
         }
-
-        User::updateUserInfo($data);
-        $info = 'Сохранено';
-        return redirect()->route('info',
-            compact('info', 'data'));
-    }
-
-    public function info()
-    {
-        $userId = auth()->user()->id;
-        $user = DB::table('users')->find($userId, ['tg_link', 'vk_link', 'self_photo', 'qr_photo', 'skill_names', 'skill_prices']);
-        return view('admin.info', compact('userId', 'user'));
+        return $data;
     }
 }

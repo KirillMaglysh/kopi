@@ -53,6 +53,13 @@
                         Наши партнеры
                     </p>
                 </a>
+                <a href="{{ route('newsModeration') }}"
+                   class="nav-link {{ url()->current() === route('newsModeration') ? 'active' : ''}}">
+                    <i class="nav-icon fas fa-newspaper"></i>
+                    <p>
+                        Новости
+                    </p>
+                </a>
             @endif
         </li>
     </ul>

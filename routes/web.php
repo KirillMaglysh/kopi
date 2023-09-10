@@ -28,11 +28,13 @@ Auth::routes();
 Route::get('/self', [App\Http\Controllers\HomeController::class, 'self'])->name('self');
 
 Route::get('/selfModeration', [App\Http\Controllers\HomeController::class, 'selfModeration'])->name('selfModeration');
+Route::get('/newsModeration', [App\Http\Controllers\LKControllers\NewsController::class, 'newsModeration'])->name('newsModeration');
 Route::get('/selfSuccess/{id}', [App\Http\Controllers\HomeController::class, 'selfSuccess'])->name('selfSuccess');
 
 
 Route::get('/card', [App\Http\Controllers\LKControllers\MyCardController::class, 'card'])->name('card');
 Route::get('/newPartner', [App\Http\Controllers\LKControllers\PartnersController::class, 'newPartner'])->name('newPartner');
+Route::get('/newNews', [App\Http\Controllers\LKControllers\NewsController::class, 'newNews'])->name('newNews');
 Route::get('/myCard', [App\Http\Controllers\LKControllers\MyCardController::class, 'myCard'])->name('myCard');
 Route::get('/info', [App\Http\Controllers\LKControllers\InfoController::class, 'info'])->name('info');
 Route::get('/myDreamers', [App\Http\Controllers\LKControllers\MyDreamersController::class, 'myDreamers'])->name('myDreamers');
@@ -46,6 +48,8 @@ Route::get('/moderation', [App\Http\Controllers\HomeController::class, 'moderati
 Route::get('/partnersModeration', [App\Http\Controllers\LKControllers\PartnersController::class, 'partnersModeration'])->name('partnersModeration');
 
 Route::post('/cardSave', [App\Http\Controllers\LKControllers\NewCardController::class, 'save'])->name('card.save');
+Route::post('/newNewsSave', [App\Http\Controllers\LKControllers\EditNewsController::class, 'newNews'])->name('newNews.save');
+Route::post('/editOldSave', [App\Http\Controllers\LKControllers\EditNewsController::class, 'edit'])->name('editOld.save');
 Route::post('/infoSave', [App\Http\Controllers\LKControllers\InfoController::class, 'save'])->name('info.save');
 Route::post('/selfSave', [App\Http\Controllers\HomeController::class, 'selfSave'])->name('selfSave');
 Route::post('/partnerSave', [App\Http\Controllers\LKControllers\NewPartnerController::class, 'save'])->name('partner.save');
