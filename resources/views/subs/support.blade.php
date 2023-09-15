@@ -3,11 +3,12 @@
 @section('content')
     @include('public.menu')
     <!-- /.navbar -->
-    <link type="text/css" rel="stylesheet" href="{{ asset('css/app.css') }}">
+{{--    <link type="text/css" rel="stylesheet" href="{{ asset('css/app.css') }}">--}}
 
     <div class="mt-5 pt-5">
         <h1 class="mt-5 pt-5 text-center">Наши мечтатели</h1>
     </div>
+
     <div class="mt-4 pt-4">
         <form class="search-form" method="get" action="{{route('search.skills')}}">
             @if($is_filter)

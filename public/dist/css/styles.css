@@ -12787,3 +12787,84 @@ html {
     display: block;
     margin: 0 auto;
 }
+
+.news-slider-item {
+    display: inline-block;
+    max-height: 300px;
+    width: 380px;
+    margin: 10px;
+    padding: 20px;
+    background-color: #e7e7e7;
+}
+
+.news-slider-item img {
+    width: 128px;
+    height: auto;
+    object-fit: cover;
+    margin-bottom: 10px;
+    margin-right: 20px;
+}
+
+.news-slider-item button {
+    display: block;
+    margin: 0 auto;
+}
+
+.scroll-container {
+    width: 100%;
+    overflow-x: hidden;
+    white-space: nowrap;
+    position: relative;
+}
+
+.scroll-container::-webkit-scrollbar {
+    height: 8px;
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+.scroll-container::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.scroll-container::-webkit-scrollbar-track {
+    background: #eee;
+}
+
+.scroll-container .scroll-content {
+    display: inline-block;
+}
+
+.scroll-buttons {
+    position: relative;
+    width: 100%;
+    height: 40px;
+}
+
+.scroll-button {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 40px;
+    background-color: #ddd;
+    border: none;
+    color: #888;
+    font-size: 24px;
+    outline: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.scroll-button:hover {
+    background-color: #bbb;
+}
+
+.scroll-button.left {
+    left: 0;
+}
+
+.scroll-button.right {
+    right: 0;
+}

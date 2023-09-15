@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Card;
+use App\Models\News;
 use App\Models\Partner;
+use Illuminate\Support\Facades\DB;
 
 
 class PublicController extends Controller
@@ -27,6 +29,7 @@ class PublicController extends Controller
     public function show()
     {
         $partners = Partner::all();
-        return view('welcome', compact('partners'));
+        $newsAll = DB::table('news')->orderByDesc('createdAt')->get();
+        return view('welcome', compact('partners', 'newsAll'));
     }
 }
