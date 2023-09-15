@@ -56,3 +56,4 @@ Route::get('/newsModeration', [App\Http\Controllers\LKControllers\NewsController
 Route::get('/newNews', [App\Http\Controllers\LKControllers\NewsController::class, 'newNews'])->name('newNews');
 Route::get('/edit', [App\Http\Controllers\LKControllers\NewsController::class, 'edit'])->name('editNews');
 Route::get('/deleteNews/{id}', [App\Http\Controllers\LKControllers\NewsController::class, 'delete'])->name('deleteNews');
+Route::get('/moreNews/{id}', [App\Http\Controllers\LKControllers\NewsController::class, 'delete'])->name('moreNews');

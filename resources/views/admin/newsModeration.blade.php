@@ -13,7 +13,7 @@
             </div>
         </div>
 
-        {{--<div class="d-flex justify-content-start bd-highlight mb-3">
+        <div class="d-flex justify-content-start bd-highlight mb-3" style="flex-wrap: wrap">
             @foreach($newsAll as $item)
                 <div class="p-2 bd-highlight">
                     <div class="row">
@@ -69,6 +69,6 @@
                     </div>
                 </div>
             @endforeach
-        </div>--}}
+        </div>
     </div>
 @endsection
