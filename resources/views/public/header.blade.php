@@ -9,13 +9,10 @@
         <div class="divider-custom divider-light">
             <div class="divider-custom-line"></div>
             <div class="divider-custom-icon">
-                <svg class="svg-inline--fa fa-coin" aria-hidden="true" focusable="false" data-prefix="fas"
-                     data-icon="star" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"
-                     data-fa-i2svg="" width="32" height="32">
-                    <path fill="currentColor"
-                          d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0ZM9.283 4.002H7.971L6.072 5.385v1.271l1.834-1.318h.065V12h1.312V4.002Z">
-                    </path>
-                </svg><!-- <i class="fas fa-coin"></i> Font Awesome fontawesome.com -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
+                     class="bi bi-circle-fill" viewBox="0 0 32 32">
+                    <circle cx="16" cy="16" r="16"/>
+                </svg>
             </div>
             <div class="divider-custom-line"></div>
         </div>
