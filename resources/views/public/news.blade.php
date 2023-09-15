@@ -122,8 +122,21 @@
         $(document).ready(main);
     </script>
 
+    <script>
+        function changeSliderSizeIfNeeded() {
+            if (window.outerHeight < window.outerWidth) {
+                document.getElementById("my_slider").setAttribute("style", "width:50%");
+            } else {
+                document.getElementById("my_slider").setAttribute("style", "width:80%");
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", changeSliderSizeIfNeeded);
+        addEventListener("resize", changeSliderSizeIfNeeded);
+    </script>
+
     @if($newsAll && sizeof($newsAll) > 0)
-        <div class="my-slider">
+        <div class="my-slider" id="my_slider">
             <div class="row">
                 <div class="row" id="slideshow">
                     @php($cnt = 0)
@@ -131,7 +144,8 @@
                         <div class="@if($cnt > 0)hidden @endif row">
                             @php($cnt++)
                             <div class="news-card shadow-sm" id="news-card-id">
-                                <div class="d-flex justify-content-start bd-highlight mb-3" style="width: 100%; height: 100%">
+                                <div class="d-flex justify-content-start bd-highlight mb-3"
+                                     style="width: 100%; height: 100%">
                                     <div class="p-2 bd-highlight" style="width: 40%">
                                         <img style="width: 100%"
                                              src="{{ asset('storage/newsPhoto/' . $item->photo . '.jpg') }}"
