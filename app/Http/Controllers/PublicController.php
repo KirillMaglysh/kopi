@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Partner;
 use Illuminate\Support\Facades\DB;
+use Jenssegers\Agent\Agent;
 
 
 class PublicController extends Controller
@@ -26,8 +27,9 @@ class PublicController extends Controller
 
     public function show()
     {
+        $agent = new Agent();
         $partners = Partner::all();
         $newsAll = DB::table('news')->orderByDesc('createdAt')->limit(20)->get();
-        return view('welcome', compact('partners', 'newsAll'));
+        return view('welcome', compact('partners', 'newsAll', 'agent'));
     }
 }

@@ -128,10 +128,13 @@
                 document.getElementById("my_slider").setAttribute("style", "width:50%");
             } else {
                 document.getElementById("my_slider").setAttribute("style", "width:80%");
+                if (window.outerHeight > window.outerWidth * 1.5) {
+                    document.getElementById("slideshow").setAttribute("style", "height:500px");
+                }
             }
         }
 
-        document.addEventListener("DOMContentLoaded", changeSliderSizeIfNeeded);
+        addEventListener("DOMContentLoaded", changeSliderSizeIfNeeded);
         addEventListener("resize", changeSliderSizeIfNeeded);
     </script>
 
@@ -144,34 +147,68 @@
                         <div class="@if($cnt > 0)hidden @endif row">
                             @php($cnt++)
                             <div class="news-card shadow-sm" id="news-card-id">
-                                <div class="d-flex justify-content-start bd-highlight mb-3"
-                                     style="width: 100%; height: 100%">
-                                    <div class="p-2 bd-highlight" style="width: 40%">
-                                        <img style="width: 100%"
-                                             src="{{ asset('storage/newsPhoto/' . $item->photo . '.jpg') }}"
-                                             alt="Card image cap">
+                                @if($agent->isDesktop())
+                                    <div class="d-flex justify-content-start bd-highlight mb-3"
+                                         style="width: 100%; height: 100%">
+                                        <div class="p-2 bd-highlight" style="width: 40%">
+                                            <img style="width: 100%"
+                                                 src="{{ asset('storage/newsPhoto/' . $item->photo . '.jpg') }}"
+                                                 alt="Card image cap">
+                                        </div>
+
+                                        <div class="p-2 bd-highlight" style="width: 60%; height: 100%">
+                                            <div class="row"
+                                                 style="text-align: center; align-content: center; height: 20%">
+                                                <b style="font-size: 24px; margin-bottom: 8px">{{ $item->name }}</b>
+                                            </div>
+
+                                            <div class="row" style="text-align: justify; height: 70%">
+                                                <p style="text-indent: 10px; color: #2C3E50; font-size: 16px">{{ $item->short_desk }}</p>
+                                            </div>
+
+                                            <div class="row" style="height: 20%">
+                                                <a href="{{ route("moreNews", ['id' => $item->id]) }}"
+                                                   class="text-decoration-none">
+                                                    <button type="button" class="btn btn-dark" aria-label="Close"
+                                                            style="float: right; margin-bottom: 10px">
+                                                        Подробнее
+                                                    </button>
+                                                </a>
+                                            </div>
+                                        </div>
                                     </div>
+                                @else
+                                    <div class="d-flex justify-content-start bd-highlight mb-3"
+                                         style="width: 100%; height: 100%">
+                                        <div class="p-2 bd-highlight">
+                                            <div class="row"
+                                                 style="text-align: center; align-content: center; height: 40%">
+                                                <img style="height: 100%"
+                                                     src="{{ asset('storage/newsPhoto/' . $item->photo . '.jpg') }}"
+                                                     alt="Card image cap">
+                                            </div>
 
-                                    <div class="p-2 bd-highlight" style="width: 60%; height: 100%">
-                                        <div class="row" style="text-align: center; align-content: center; height: 20%">
-                                            <b style="font-size: 24px; margin-bottom: 8px">{{ $item->name }}</b>
-                                        </div>
+                                            <div class="row"
+                                                 style="text-align: center; align-content: center; height: 20%">
+                                                <b style="font-size: 24px; margin-bottom: 8px">{{ $item->name }}</b>
+                                            </div>
 
-                                        <div class="row" style="text-align: justify; height: 70%">
-                                            <p style="text-indent: 10px; color: #2C3E50; font-size: 16px">{{ $item->short_desk }}</p>
-                                        </div>
+                                            <div class="row" style="text-align: justify; height: 30%">
+                                                <p style="text-indent: 10px; color: #2C3E50; font-size: 16px">{{ $item->short_desk }}</p>
+                                            </div>
 
-                                        <div class="row" style="height: 20%">
-                                            <a href="{{ route("moreNews", ['id' => $item->id]) }}"
-                                               class="text-decoration-none">
-                                                <button type="button" class="btn btn-dark" aria-label="Close"
-                                                        style="float: right; margin-bottom: 10px">
-                                                    Подробнее
-                                                </button>
-                                            </a>
+                                            <div class="row" style="height: 10%">
+                                                <a href="{{ route("moreNews", ['id' => $item->id]) }}"
+                                                   class="text-decoration-none">
+                                                    <button type="button" class="btn btn-dark" aria-label="Close"
+                                                            style="float: right; margin-bottom: 10px">
+                                                        Подробнее
+                                                    </button>
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                @endif
                             </div>
                         </div>
                     @endforeach
