@@ -17,7 +17,7 @@
             @foreach($newsAll as $item)
                 <div class="p-2 bd-highlight">
                     <div class="row">
-                        <div class="news-card shadow-sm">
+                        <div class="news-moderation-item shadow-sm">
                             <div class="d-flex justify-content-start bd-highlight mb-3">
                                 <div class="p-2 bd-highlight">
                                     <img

@@ -102,7 +102,7 @@
                 prevChange = (new Date()).getTime();
             });
 
-            /*setInterval(function () {
+            setInterval(function () {
                 if ((new Date()).getTime() - prevChange < 1000) {
                     return;
                 }
@@ -116,7 +116,7 @@
                         .appendTo('#slideshow');
                 }
                 prevChange = (new Date()).getTime();
-            }, 5000);*/
+            }, 5000);
         };
 
         $(document).ready(main);
