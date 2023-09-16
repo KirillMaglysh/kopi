@@ -126,6 +126,7 @@
         function changeSliderSizeIfNeeded() {
             if (window.outerHeight < window.outerWidth) {
                 document.getElementById("my_slider").setAttribute("style", "width:50%");
+                document.getElementById("slideshow").setAttribute("style", "height:350px");
             } else {
                 document.getElementById("my_slider").setAttribute("style", "width:80%");
                 if (window.outerHeight > window.outerWidth * 1.5) {

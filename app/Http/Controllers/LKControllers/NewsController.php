@@ -22,7 +22,7 @@ class NewsController extends Controller
     public function newsModeration(Request $request)
     {
         $info = $request->info;
-        $newsAll = DB::table('news')->orderByDesc('createdAt')->get();
+        $newsAll = DB::table('news')->orderByDesc('created_at')->get();
         return view('admin.newsModeration', compact('newsAll', 'info'));
     }
 

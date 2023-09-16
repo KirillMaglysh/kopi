@@ -29,7 +29,7 @@ class PublicController extends Controller
     {
         $agent = new Agent();
         $partners = Partner::all();
-        $newsAll = DB::table('news')->orderByDesc('createdAt')->limit(20)->get();
+        $newsAll = DB::table('news')->orderByDesc('created_at')->limit(20)->get();
         return view('welcome', compact('partners', 'newsAll', 'agent'));
     }
 }

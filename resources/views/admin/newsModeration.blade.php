@@ -1,10 +1,41 @@
 @extends('admin.layout')
 
 @section('content')
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <link rel="stylesheet" href="{{ asset('dist/css/magnific-popup.css') }}">
+    <script src="{{ asset('dist/js/jquery.magnific-popup.js') }}"></script>
+
+    <script>
+        $(document).ready(function () {
+                $('.show-popup').magnificPopup({
+                    type: 'inline',
+                    removalDelay: 500, //delay removal by X to allow out-animation
+                    callbacks: {
+                        beforeOpen: function () {
+                            this.st.mainClass = this.st.el.attr('data-effect');
+                        }
+                    },
+                    midClick: true // allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source.
+                })
+            }
+        );
+    </script>
+
     <div class="row">
         <link rel="stylesheet" href="{{ asset('dist/css/styles.css') }}">
 
         <div class="d-flex justify-content-center bd-highlight mb-3" style="flex-wrap: wrap">
+            <div id="test-popup" class="white-popup mfp-with-anim mfp-hide">
+                <h2>Zoom popup</h2>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Deleniti itaque ipsam illum eaque, odio
+                    cumque quam asperiores dolores labore ab.</p>
+            </div>
+
+            <ul>
+                <li><a href="#test-popup" class="show-popup" data-effect="mfp-zoom-in">Зум</a></li>
+            </ul>
+
             <div class="p-2 bd-highlight">
                 <button type="submit" class="btn btn-dark" style="font-size: 18px"
                         onclick="window.location='{{ url("newNews") }}'">
