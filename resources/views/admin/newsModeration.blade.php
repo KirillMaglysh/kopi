@@ -1,40 +1,61 @@
 @extends('admin.layout')
 
 @section('content')
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-
-    <link rel="stylesheet" href="{{ asset('dist/css/magnific-popup.css') }}">
-    <script src="{{ asset('dist/js/jquery.magnific-popup.js') }}"></script>
-
-    <script>
-        $(document).ready(function () {
-                $('.show-popup').magnificPopup({
-                    type: 'inline',
-                    removalDelay: 500, //delay removal by X to allow out-animation
-                    callbacks: {
-                        beforeOpen: function () {
-                            this.st.mainClass = this.st.el.attr('data-effect');
-                        }
-                    },
-                    midClick: true // allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source.
-                })
-            }
-        );
-    </script>
-
     <div class="row">
         <link rel="stylesheet" href="{{ asset('dist/css/styles.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{asset('dist/css/magnific-popup.css')}}">
 
         <div class="d-flex justify-content-center bd-highlight mb-3" style="flex-wrap: wrap">
-            <div id="test-popup" class="white-popup mfp-with-anim mfp-hide">
-                <h2>Zoom popup</h2>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Deleniti itaque ipsam illum eaque, odio
-                    cumque quam asperiores dolores labore ab.</p>
+            <button>
+                <a href="#popup-info" class="open-popup"
+                   style="text-decoration: none;">
+                    Click to Open PopUp
+                </a>
+            </button>
+            <!-- Popup to display -->
+            <div id="popup-info" class="mfp-hide" style=
+                "text-align:center;
+                background:white;height:600px;">
+
+                <h1 style="color: green;">
+                    GEEKSFORGEEKS
+                </h1>
+
+                <div style="font-size: 15px;
+            font-weight: bold;">
+                    WELCOME TO GEEKSFORGEEKS
+                </div>
             </div>
 
-            <ul>
-                <li><a href="#test-popup" class="show-popup" data-effect="mfp-zoom-in">Зум</a></li>
-            </ul>
+            <script src=
+                        "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+            </script>
+            <script type="text/javascript" src="{{asset('dist/js/jquery.magnific-popup.min.js')}}"></script>
+
+            <script type="text/javascript">
+                $(document).ready(function ($) {
+                    $('.open-popup').magnificPopup({
+                        type: 'inline',
+
+                        // Fixed position will be used
+                        fixContentPos: true,
+
+                        // Since disabled, Magnific Popup
+                        // will not put close button
+                        // inside content of popup
+                        closeBtnInside: false,
+                        preloader: false,
+
+                        // Delay in milliseconds before
+                        // popup is removed
+                        removalDelay: 160,
+
+                        // Class that is added to
+                        // popup wrapper and background
+                        mainClass: 'mfp-fade'
+                    });
+                });
+            </script>
 
             <div class="p-2 bd-highlight">
                 <button type="submit" class="btn btn-dark" style="font-size: 18px"
