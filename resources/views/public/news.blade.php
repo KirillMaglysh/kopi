@@ -242,23 +242,6 @@
                             </div>
                         </div>
                     @endforeach
-
-                    @foreach($newsAll as $item)
-                        <div id="more_{{$item->id}}" class="mfp-hide news-more-canvas">
-                            <h1 style="color: black; text-align: center; margin-bottom: 10px">
-                                {{$item->name}}
-                            </h1>
-
-                            <div style="overflow-y: auto; height: 90%">
-                                <p style="height: 100%; text-align :justify; margin-right: 15px">
-                                    <img
-                                        src="{{ asset('storage/newsPhoto/' . $item->photo . '.jpg') }}"
-                                        class="news-more-img" alt="Card image cap">
-                                    {{$item->long_desk}}
-                                </p>
-                            </div>
-                        </div>
-                    @endforeach
                 </div>
             </div>
 
@@ -267,6 +250,21 @@
                 <a class="slider-button arrowR" style="float: right">&gt;</a>
             </div>
         </div>
-        </div>
+        @foreach($newsAll as $item)
+            <div id="more_{{$item->id}}" class="mfp-hide news-more-canvas">
+                <h1 style="color: black; text-align: center; margin-bottom: 10px">
+                    {{$item->name}}
+                </h1>
+
+                <div style="overflow-y: auto; height: 90%">
+                    <p style="height: 100%; text-align :justify; margin-right: 15px">
+                        <img
+                            src="{{ asset('storage/newsPhoto/' . $item->photo . '.jpg') }}"
+                            class="news-more-img" alt="Card image cap">
+                        {{$item->long_desk}}
+                    </p>
+                </div>
+            </div>
+        @endforeach
     @endif
 </section>
