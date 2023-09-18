@@ -1,6 +1,36 @@
 <section class="page-section" id="partners">
     <h1 style="display:flex; justify-content: center; margin-bottom: 30px">Что нового</h1>
 
+    <link rel="stylesheet" type="text/css" href="{{asset('dist/css/magnific-popup.css')}}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="{{asset('dist/js/jquery.magnific-popup.min.js')}}"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function ($) {
+            $('.open-popup').magnificPopup({
+                type: 'inline',
+
+                // Fixed position will be used
+                fixContentPos: true,
+
+                // Since disabled, Magnific Popup
+                // will not put close button
+                // inside content of popup
+                closeBtnInside: false,
+                preloader: false,
+
+                // Delay in milliseconds before
+                // popup is removed
+                removalDelay: 160,
+
+                // Class that is added to
+                // popup wrapper and background
+                mainClass: 'mfp-fade'
+            });
+        });
+    </script>
+
     <style>
         .hidden {
             display: none;
@@ -167,9 +197,8 @@
                                                 <p style="text-indent: 10px; color: #2C3E50; font-size: 16px">{{ $item->short_desk }}</p>
                                             </div>
 
-                                            <div class="row" style="height: 20%">
-                                                <a href="{{ route("moreNews", ['id' => $item->id]) }}"
-                                                   class="text-decoration-none">
+                                            <div class="row">
+                                                <a href="#more_{{$item->id}}" class="text-decoration-none open-popup">
                                                     <button type="button" class="btn btn-dark" aria-label="Close"
                                                             style="float: right; margin-bottom: 10px">
                                                         Подробнее
@@ -210,6 +239,21 @@
                                         </div>
                                     </div>
                                 @endif
+                            </div>
+                        </div>
+
+                        <div id="more_{{$item->id}}" class="mfp-hide news-more-canvas">
+                            <h1 style="color: black; text-align: center; margin-bottom: 10px">
+                                {{$item->name}}
+                            </h1>
+
+                            <div style="overflow-y: auto; height: 90%">
+                                <p style="height: 100%; text-align :justify; margin-right: 15px">
+                                    <img
+                                        src="{{ asset('storage/newsPhoto/' . $item->photo . '.jpg') }}"
+                                        class="news-more-img" alt="Card image cap">
+                                    {{$item->long_desk}}
+                                </p>
                             </div>
                         </div>
                     @endforeach

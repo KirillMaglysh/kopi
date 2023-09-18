@@ -4,59 +4,36 @@
     <div class="row">
         <link rel="stylesheet" href="{{ asset('dist/css/styles.css') }}">
         <link rel="stylesheet" type="text/css" href="{{asset('dist/css/magnific-popup.css')}}">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+        </script>
+        <script type="text/javascript" src="{{asset('dist/js/jquery.magnific-popup.min.js')}}"></script>
+
+        <script type="text/javascript">
+            $(document).ready(function ($) {
+                $('.open-popup').magnificPopup({
+                    type: 'inline',
+
+                    // Fixed position will be used
+                    fixContentPos: true,
+
+                    // Since disabled, Magnific Popup
+                    // will not put close button
+                    // inside content of popup
+                    closeBtnInside: false,
+                    preloader: false,
+
+                    // Delay in milliseconds before
+                    // popup is removed
+                    removalDelay: 160,
+
+                    // Class that is added to
+                    // popup wrapper and background
+                    mainClass: 'mfp-fade'
+                });
+            });
+        </script>
 
         <div class="d-flex justify-content-center bd-highlight mb-3" style="flex-wrap: wrap">
-            <button>
-                <a href="#popup-info" class="open-popup"
-                   style="text-decoration: none;">
-                    Click to Open PopUp
-                </a>
-            </button>
-            <!-- Popup to display -->
-            <div id="popup-info" class="mfp-hide" style=
-                "text-align:center;
-                background:white;height:600px;">
-
-                <h1 style="color: green;">
-                    GEEKSFORGEEKS
-                </h1>
-
-                <div style="font-size: 15px;
-            font-weight: bold;">
-                    WELCOME TO GEEKSFORGEEKS
-                </div>
-            </div>
-
-            <script src=
-                        "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
-            </script>
-            <script type="text/javascript" src="{{asset('dist/js/jquery.magnific-popup.min.js')}}"></script>
-
-            <script type="text/javascript">
-                $(document).ready(function ($) {
-                    $('.open-popup').magnificPopup({
-                        type: 'inline',
-
-                        // Fixed position will be used
-                        fixContentPos: true,
-
-                        // Since disabled, Magnific Popup
-                        // will not put close button
-                        // inside content of popup
-                        closeBtnInside: false,
-                        preloader: false,
-
-                        // Delay in milliseconds before
-                        // popup is removed
-                        removalDelay: 160,
-
-                        // Class that is added to
-                        // popup wrapper and background
-                        mainClass: 'mfp-fade'
-                    });
-                });
-            </script>
-
             <div class="p-2 bd-highlight">
                 <button type="submit" class="btn btn-dark" style="font-size: 18px"
                         onclick="window.location='{{ url("newNews") }}'">
@@ -88,8 +65,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <a href="{{ route("deleteNews", ['id' => $item->id]) }}"
-                                   class="text-decoration-none">
+                                <a href="#more_{{$item->id}}" class="text-decoration-none open-popup">
                                     <button type="button" class="btn btn-dark" aria-label="Close"
                                             style="float: right; margin-bottom: 10px">
                                         Подробнее
@@ -118,6 +94,21 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+
+                <div id="more_{{$item->id}}" class="mfp-hide news-more-canvas">
+                    <h1 style="color: black; text-align: center; margin-bottom: 10px">
+                        {{$item->name}}
+                    </h1>
+
+                    <div style="overflow-y: auto; height: 90%">
+                        <p style="height: 100%; text-align :justify; margin-right: 15px">
+                            <img
+                                src="{{ asset('storage/newsPhoto/' . $item->photo . '.jpg') }}"
+                                class="news-more-img" alt="Card image cap">
+                            {{$item->long_desk}}
+                        </p>
                     </div>
                 </div>
             @endforeach
