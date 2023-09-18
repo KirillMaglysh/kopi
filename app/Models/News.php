@@ -40,7 +40,7 @@ class News extends Authenticatable
 
     public static function updateNewsInfo($data): bool
     {
-        return DB::table('news')->where('id', $data['newsId'])->update([
+        return DB::table('news')->where('id', $data['news_id'])->update([
             'name' => $data['name'],
             'short_desk' => $data['short_desk'],
             'long_desk' => $data['long_desk'],

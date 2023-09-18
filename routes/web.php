@@ -50,10 +50,10 @@ Route::get('/myDreamers', [App\Http\Controllers\LKControllers\MyDreamersControll
 
 Route::get('/moderation', [App\Http\Controllers\HomeController::class, 'moderation'])->name('moderation');
 
-Route::post('/newNewsSave', [App\Http\Controllers\LKControllers\EditNewsController::class, 'newNews'])->name('newNews.save');
-Route::post('/editOldSave', [App\Http\Controllers\LKControllers\EditNewsController::class, 'edit'])->name('editOld.save');
+Route::post('/newNewsSave', [App\Http\Controllers\LKControllers\EditNewsController::class, 'saveNew'])->name('newNews.save');
+Route::post('/editOldSave', [App\Http\Controllers\LKControllers\EditNewsController::class, 'editOld'])->name('editOld.save');
 Route::get('/newsModeration', [App\Http\Controllers\LKControllers\NewsController::class, 'newsModeration'])->name('newsModeration');
 Route::get('/newNews', [App\Http\Controllers\LKControllers\NewsController::class, 'newNews'])->name('newNews');
-Route::get('/edit', [App\Http\Controllers\LKControllers\NewsController::class, 'edit'])->name('editNews');
+Route::get('/edit/{id}', [App\Http\Controllers\LKControllers\NewsController::class, 'edit'])->name('editNews');
 Route::get('/deleteNews/{id}', [App\Http\Controllers\LKControllers\NewsController::class, 'delete'])->name('deleteNews');
 Route::get('/moreNews/{id}', [App\Http\Controllers\LKControllers\NewsController::class, 'delete'])->name('moreNews');

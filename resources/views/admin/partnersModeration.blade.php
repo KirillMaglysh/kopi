@@ -21,7 +21,7 @@
                         <div class="partner-card shadow-sm" style="max-width: 150rem">
                             <div class="row">
                                 <img style="margin-left: auto; margin-right: auto"
-                                     src="{{ asset('storage/partnerPhoto/' . $item['photo'] . '.jpg') }}"
+                                     src="{{ asset('storage/partnerPhoto/' . $item['photo']) }}"
                                      alt="Card image cap">
                             </div>
                             <div class="row" style="align-content: center">

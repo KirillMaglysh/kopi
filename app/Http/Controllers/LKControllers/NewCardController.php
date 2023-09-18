@@ -35,7 +35,7 @@ class NewCardController extends Controller
         $rules = [
             'dream_name' => 'required|string|max:50',
             'description' => 'required|string|max:500',
-            'photo' => 'required|file|mimes:jpg',
+            'photo' => 'required|file|mimes:jpg,png,jpeg',
             'userId' => 'required|integer|',
             'summa' => 'required|integer|',
         ];

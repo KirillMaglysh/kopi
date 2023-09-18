@@ -38,7 +38,7 @@
                                 <div class="row">
                                     <div class="col">
                                         <img class="card-img-left" width="150px"
-                                             src="{{ asset('storage/cardPhotos/' . $card->photo_card . '.jpg') }}"
+                                             src="{{ asset('storage/cardPhotos/' . $card->photo_card) }}"
                                              alt="Card image cap" style="max-height: 350px">
                                     </div>
                                     {{--<div class="col">
@@ -78,7 +78,7 @@
                                                     </div>
                                                     <div class="modal-body" align="center">
                                                         <img class="card-img-left mt-3" width="300px"
-                                                             src="{{ asset('storage/cardQrs/' . $card->photo_qr . '.jpg') }}"
+                                                             src="{{ asset('storage/cardQrs/' . $card->photo_qr) }}"
                                                              alt="Card image cap">
                                                     </div>
                                                     <div class="modal-footer">

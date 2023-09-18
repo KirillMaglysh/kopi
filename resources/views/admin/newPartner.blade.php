@@ -18,7 +18,7 @@
                     <div class="mb-3">
                         <label for="photo" class="form-label">Фото</label>
                         <input type="file" class="form-control" name="photo" id="photo">
-                        <p>формат jpg</p>
+                        <p>форматы jpg, jpeg, png</p>
                     </div>
 
                     <button type="submit" class="btn btn-primary">Сохранить</button>

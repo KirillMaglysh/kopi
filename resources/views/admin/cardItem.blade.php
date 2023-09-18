@@ -8,7 +8,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col">
-                            <img class="card-img-left" width="150px" src="{{ asset('storage/cardPhotos/' . $card['photo_card'] . '.jpg') }}" alt="Card image cap">
+                            <img class="card-img-left" width="150px" src="{{ asset('storage/cardPhotos/' . $card['photo_card']) }}" alt="Card image cap">
                         </div>
                         <div class="col">
                             <div class="d-flex justify-content-between align-items-center">
@@ -38,7 +38,7 @@
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body" align="center">
-                                            <img class="card-img-left mt-3" width="300px" src="{{ asset('storage/cardQrs/' . $card['photo_qr'] . '.jpg') }}" alt="Card image cap">
+                                            <img class="card-img-left mt-3" width="300px" src="{{ asset('storage/cardQrs/' . $card['photo_qr']) }}" alt="Card image cap">
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

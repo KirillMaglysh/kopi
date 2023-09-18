@@ -30,7 +30,7 @@ class NewPartnerController extends Controller
 
         $rules = [
             'name' => 'required|string|max:100',
-            'photo' => 'required|file|mimes:jpg',
+            'photo' => 'required|file|mimes:jpg,png,jpeg',
         ];
         $validator = Validator::make($data, $rules);
         if ($validator->fails()) {

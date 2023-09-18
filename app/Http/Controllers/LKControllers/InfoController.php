@@ -31,10 +31,10 @@ class InfoController extends Controller
         $data['qr_photo'] = $request->file('qr_photo');
 
         $rules = [
-            'self_photo' => 'nullable|file|mimes:jpg',
+            'self_photo' => 'nullable|file|mimes:jpg,png,jpeg',
             'tg_link' => 'required|url|max:100',
             'vk_link' => 'nullable|url|max:100',
-            'qr_photo' => 'nullable|file|mimes:jpg',
+            'qr_photo' => 'nullable|file|mimes:jpg,png,jpeg',
             'userId' => 'required|integer|',
         ];
         $validator = Validator::make($data, $rules);

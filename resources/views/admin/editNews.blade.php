@@ -10,6 +10,10 @@
                     @if (!empty($userId))
                         <input type="hidden" class="form-control" name="userId" value="{{ $userId }}">
                     @endif
+                    @if (!empty($news->id))
+                        <input type="hidden" class="form-control" name="news_id" value="{{ $news->id }}">
+                    @endif
+
 
                     <div class="mb-3">
                         <label for="name" class="form-label">Заголовок</label>
@@ -20,12 +24,12 @@
                     <div class="mb-3">
                         <label for="photo" class="form-label">Фото</label>
                         <input type="file" class="form-control" name="photo" id="photo">
-                        <p>формат jpg</p>
+                        <p>формат jpg, jpeg, png</p>
                     </div>
 
                     @if ($edit)
                         <img id="current_photo" class="card-img-left" width="100px"
-                             src="{{ asset('storage/newsPhoto/' . $news->photo . '.jpg') }}"
+                             src="{{ asset('storage/newsPhoto/' . $news->photo) }}"
                              alt="CurrentPhoto.jpg" style="margin-bottom: 10px">
                     @endif
 

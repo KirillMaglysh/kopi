@@ -29,7 +29,7 @@
                             <div class="row">
                                 <div class="col">
                                     <img class="card-img-left" width="150px"
-                                         src="{{ asset('storage/cardPhotos/' . $item['photo_card'] . '.jpg') }}"
+                                         src="{{ asset('storage/cardPhotos/' . $item['photo_card']) }}"
                                          alt="Card image cap">
                                 </div>
                                 <div class="col">

@@ -4,9 +4,7 @@ namespace App\Http\Controllers\LKControllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Utills\Utilities;
-use App\Models\Card;
 use App\Models\News;
-use App\Models\Partner;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
@@ -31,7 +29,7 @@ class EditNewsController extends Controller
 
         $rules = [
             'name' => 'required|string|max:100',
-            'photo' => 'required|file|mimes:jpg',
+            'photo' => 'required|file|mimes:jpg,png,jpeg',
             'short_desk' => 'required|string|max:1000',
             'long_desk' => 'required|string|max:3000',
         ];
@@ -45,7 +43,6 @@ class EditNewsController extends Controller
 
         $news = DB::table('news')->where('id', $data['news_id']);
         $data = $this->checkNullable($data, $request, $news);
-
         News::updateNewsInfo($data);
         return redirect()->route('newsModeration');
     }
@@ -58,7 +55,7 @@ class EditNewsController extends Controller
 
         $rules = [
             'name' => 'required|string|max:100',
-            'photo' => 'required|file|mimes:jpg',
+            'photo' => 'nullable|file|mimes:jpg,png,jpeg',
             'short_desk' => 'required|string|max:1000',
             'long_desk' => 'required|string|max:3000',
         ];
@@ -74,4 +71,21 @@ class EditNewsController extends Controller
         News::insertNews($data);
         return redirect()->route('newsModeration');
     }
+
+    /**
+     * @param mixed $data
+     * @param Request $request
+     * @param mixed $news
+     * @return array|mixed
+     */
+    private function checkNullable(mixed $data, Request $request, mixed $news): mixed
+    {
+        if ($data['photo']) {
+            $data = Utilities::hashPhoto($request, 'photo', 'newsPhoto', $data);
+        } else {
+            $data['photo'] = $news->photo;
+        }
+        return $data;
+    }
+
 }

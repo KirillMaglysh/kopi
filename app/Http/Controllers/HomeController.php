@@ -52,7 +52,7 @@ class HomeController extends Controller
         $fileSafe = $request->file("fileSafe");
         $hashSelf = Hash::make($fileSafe);
         $hashSelf = str_replace('/', 'a', $hashSelf);
-        Storage::disk('public')->putFileAs('selfPhoto', $fileSafe, $hashSelf . '.jpg');
+        Storage::disk('public')->putFileAs('selfPhoto', $fileSafe, $hashSelf);
         DB::table('users')
             ->where('id', $userId)
             ->update(['fileSelf' => $hashSelf]);

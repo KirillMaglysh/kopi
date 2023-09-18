@@ -24,18 +24,21 @@
 
                     <div class="mb-3">
                         <label for="dream_name" class="form-label">Твоя мечта</label>
-                        <input placeholder="На что нужны деньги?" type="text" name="dream_name" class="form-control" id="dream_name">
+                        <input placeholder="На что нужны деньги?" type="text" name="dream_name" class="form-control"
+                               id="dream_name">
                         <p>Пример: «MacBook Pro»</p>
                     </div>
                     <div class="mb-3">
                         <label for="description" class="form-label">Кратко опиши свою мечту</label>
-                        <textarea class="form-control" placeholder="Кратко опиши свою идею" name="description" id="description" cols="30" rows="10"></textarea>
-                        <p>Пример: «Я давно увлекаюсь дазайном и обработкой фотографий, а для этих целей MacBook - просто идеальный комьютер»</p>
+                        <textarea class="form-control" placeholder="Кратко опиши свою идею" name="description"
+                                  id="description" cols="30" rows="10"></textarea>
+                        <p>Пример: «Я давно увлекаюсь дазайном и обработкой фотографий, а для этих целей MacBook -
+                            просто идеальный комьютер»</p>
                     </div>
                     <div class="mb-3">
                         <label for="photo" class="form-label">Обложка твоей заявки</label>
                         <input placeholder="" type="file" class="form-control" name="photo" id="photo">
-                        <p>формат jpg</p>
+                        <p>формат jpg, jpeg, png</p>
                     </div>
 
                     <div class="mb-3">

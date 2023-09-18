@@ -107,7 +107,7 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body" align="center">
-                                <img class="card-img-left mt-3" width="300px" src="{{ asset('storage/selfPhoto/' . $data['fileSelf'] . '.jpg') }}" alt="Card image cap">
+                                <img class="card-img-left mt-3" width="300px" src="{{ asset('storage/selfPhoto/' . $data['fileSelf']) }}" alt="Card image cap">
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

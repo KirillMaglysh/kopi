@@ -183,7 +183,7 @@
                                          style="width: 100%; height: 100%">
                                         <div class="p-2 bd-highlight" style="width: 40%">
                                             <img style="width: 100%"
-                                                 src="{{ asset('storage/newsPhoto/' . $item->photo . '.jpg') }}"
+                                                 src="{{ asset('storage/newsPhoto/' . $item->photo) }}"
                                                  alt="Card image cap">
                                         </div>
 
@@ -214,7 +214,7 @@
                                             <div class="row"
                                                  style="text-align: center; align-content: center; height: 40%">
                                                 <img style="height: 100%"
-                                                     src="{{ asset('storage/newsPhoto/' . $item->photo . '.jpg') }}"
+                                                     src="{{ asset('storage/newsPhoto/' . $item->photo) }}"
                                                      alt="Card image cap">
                                             </div>
 
@@ -259,7 +259,7 @@
                 <div style="overflow-y: auto; height: 90%">
                     <p style="height: 100%; text-align :justify; margin-right: 15px">
                         <img
-                            src="{{ asset('storage/newsPhoto/' . $item->photo . '.jpg') }}"
+                            src="{{ asset('storage/newsPhoto/' . $item->photo) }}"
                             class="news-more-img" alt="Card image cap">
                         {{$item->long_desk}}
                     </p>

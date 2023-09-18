@@ -17,12 +17,13 @@ class Utilities
     public static function hashPhoto(Request $request, string $keyName, string $dir, mixed $data): array
     {
         $photoCardFile = $request->file($keyName);
-        $hashPhotoCard = Hash::make($photoCardFile);
+        $hashPhotoCard = Hash::make($photoCardFile) .'.'. $photoCardFile->extension();
+
         $hashPhotoCard = str_replace('/', 'a', $hashPhotoCard);
         $data[$keyName] = $hashPhotoCard;
 
         $photoCardFile->storeAs('temp');
-        $photoCardFile->move(public_path('storage/' . $dir . '/'), $hashPhotoCard . '.jpg');
+        $photoCardFile->move(public_path('storage/' . $dir . '/'), $hashPhotoCard);
 
         return $data;
     }

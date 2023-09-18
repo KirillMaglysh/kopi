@@ -41,7 +41,7 @@ class NewsController extends Controller
 
     public function edit($id)
     {
-        $news = DB::table('partners')->where('id', $id);
+        $news = DB::table('news')->where('id', $id)->first();
         $edit = true;
         return view('admin.editNews', compact('edit', 'news'));
     }

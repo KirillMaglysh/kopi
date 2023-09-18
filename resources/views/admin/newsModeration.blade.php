@@ -50,7 +50,7 @@
                             <div class="d-flex justify-content-start bd-highlight mb-3">
                                 <div class="p-2 bd-highlight">
                                     <img
-                                        src="{{ asset('storage/newsPhoto/' . $item->photo . '.jpg') }}"
+                                        src="{{ asset('storage/newsPhoto/' . $item->photo) }}"
                                         alt="Card image cap">
                                 </div>
 
@@ -105,7 +105,7 @@
                     <div style="overflow-y: auto; height: 90%">
                         <p style="height: 100%; text-align :justify; margin-right: 15px">
                             <img
-                                src="{{ asset('storage/newsPhoto/' . $item->photo . '.jpg') }}"
+                                src="{{ asset('storage/newsPhoto/' . $item->photo) }}"
                                 class="news-more-img" alt="Card image cap">
                             {{$item->long_desk}}
                         </p>
