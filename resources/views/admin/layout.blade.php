@@ -74,7 +74,7 @@
     <!-- /.navbar -->
 
     <!-- Main Sidebar Container -->
-    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <aside class="main-sidebar sidebar-dark-primary elevation-4" style="overflow-x: hidden">
         <!-- Brand Logo -->
         <a href="#" class="ml-4 brand-link">
             <span class="brand-text font-weight-light">Копи на мечту</span>
