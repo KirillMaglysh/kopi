@@ -4,10 +4,10 @@
         <div class="row">
             <div class="d-flex justify-content-center bd-highlight mb-3" style="flex-wrap: wrap">
                 <div class="p-2 bd-highlight">
-                    <img src="{{ asset("dist/img/public/aboutPhoto/About3.jpg") }}">
+                    <img src="{{ asset("dist/img/public/aboutPhoto/About3.jpg") }}" alt="">
                 </div>
                 <div class="p-2 bd-highlight">
-                    <img src="{{ asset("dist/img/public/aboutPhoto/About1.jpg") }}">
+                    <img src="{{ asset("dist/img/public/aboutPhoto/About1.jpg") }}" alt="">
                 </div>
             </div>
         </div>
@@ -15,10 +15,10 @@
         <div class="row">
             <div class="d-flex justify-content-center bd-highlight mb-3" style="flex-wrap: wrap">
                 <div class="p-2 bd-highlight">
-                    <img src="{{ asset("dist/img/public/aboutPhoto/About2.jpg") }}">
+                    <img src="{{ asset("dist/img/public/aboutPhoto/About2.jpg") }}" alt="">
                 </div>
                 <div class="p-2 bd-highlight">
-                    <img src="{{ asset("dist/img/public/aboutPhoto/About0.jpg") }}">
+                    <img src="{{ asset("dist/img/public/aboutPhoto/About0.jpg") }}" alt="">
                 </div>
             </div>
         </div>
