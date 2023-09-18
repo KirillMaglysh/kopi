@@ -241,7 +241,9 @@
                                 @endif
                             </div>
                         </div>
+                    @endforeach
 
+                    @foreach($newsAll as $item)
                         <div id="more_{{$item->id}}" class="mfp-hide news-more-canvas">
                             <h1 style="color: black; text-align: center; margin-bottom: 10px">
                                 {{$item->name}}
