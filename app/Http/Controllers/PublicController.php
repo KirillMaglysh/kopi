@@ -27,9 +27,10 @@ class PublicController extends Controller
 
     public function show()
     {
+        $isAuth = auth()->user() != null;
         $agent = new Agent();
         $partners = Partner::all();
         $newsAll = DB::table('news')->orderByDesc('created_at')->limit(20)->get();
-        return view('welcome', compact('partners', 'newsAll', 'agent'));
+        return view('welcome', compact('partners', 'newsAll', 'agent', 'isAuth'));
     }
 }
