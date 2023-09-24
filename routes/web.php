@@ -37,6 +37,7 @@ Route::post('/infoSave', [App\Http\Controllers\LKControllers\InfoController::cla
 Route::get('/card', [App\Http\Controllers\LKControllers\MyCardController::class, 'card'])->name('card');
 Route::get('/cardSuccess/{id}', [App\Http\Controllers\LKControllers\MyCardController::class, 'cardSuccess'])->name('cardSuccess');
 Route::get('/card/{id}', [App\Http\Controllers\LKControllers\MyCardController::class, 'cardItem'])->name('cardItem');
+Route::get('/support/card/{id}', [App\Http\Controllers\OurDreamersController::class, 'cardMore'])->name('cardMore');
 Route::get('/cardDelete/{id}', [App\Http\Controllers\LKControllers\MyCardController::class, 'cardDelete'])->name('cardDelete');
 Route::get('/myCard', [App\Http\Controllers\LKControllers\MyCardController::class, 'myCard'])->name('myCard');
 Route::post('/cardSave', [App\Http\Controllers\LKControllers\NewCardController::class, 'save'])->name('card.save');

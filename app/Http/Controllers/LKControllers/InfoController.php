@@ -53,7 +53,7 @@ class InfoController extends Controller
     public function info()
     {
         $userId = auth()->user()->id;
-        $user = DB::table('users')->find($userId, ['tg_link', 'vk_link', 'self_photo', 'skill_names', 'skill_prices']);
+        $user = DB::table('users')->find($userId, ['tg_link', 'vk_link', 'self_photo', 'skill_names', 'skill_prices', 'skill_hour']);
         return view('admin.info', compact('userId', 'user'));
     }
 
@@ -85,13 +85,16 @@ class InfoController extends Controller
     {
         $data['skill_names'] = array();
         $data['skill_prices'] = array();
+        $data['skill_hour'] = array();
         for ($i = 0; $i < 32; $i++) {
             if (array_key_exists('skill_' . $i . '_name', $data)) {
                 $skill_name = $data['skill_' . $i . '_name'];
                 $skill_price = $data['skill_' . $i . '_price'];
+                $skill_hour = $data['skill_' . $i . '_hour'];
                 if ($skill_name && is_numeric($skill_price)) {
                     $data['skill_names'][] = $skill_name;
                     $data['skill_prices'][] = $skill_price;
+                    $data['skill_hour'][] = $skill_hour;
                 }
             }
         }

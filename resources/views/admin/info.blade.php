@@ -53,6 +53,7 @@
                             <tr>
                                 <th>Скилл</th>
                                 <th width="30%">Цена (рубли)</th>
+                                <th width="15%">Время (часы)</th>
                                 <th></th>
                             </tr>
                             </thead>
@@ -69,6 +70,11 @@
                                                class="form-control"
                                                id="skill_0_price">
                                     </td>
+                                    <td>
+                                        <input placeholder="Время..." type="text" name="skill_0_hour"
+                                               class="form-control"
+                                               id="skill_0_hour">
+                                    </td>
                                     <td width="15%">
                                         <button onclick="removeSkill(this)"
                                                 class="btn btn-social btn-close btn-close-self"></button>
@@ -77,6 +83,7 @@
                             @else
                                 @php($names = json_decode($user->skill_names))
                                 @php($prices = json_decode($user->skill_prices))
+                                @php($hours = json_decode($user->skill_hour))
                                 @for($i = 0; $i < sizeof($names); $i++)
                                     <tr class="active-row">
                                         <td>
@@ -92,6 +99,13 @@
                                                    name={{'skill_'.$i.'_price'}}
                                                    class="form-control"
                                                    id={{'skill_'.$i.'_price'}}>
+                                        </td>
+                                        <td>
+                                            <input type="text"
+                                                   value="{{$hours[$i]}}"
+                                                   name={{'skill_'.$i.'_hour'}}
+                                                   class="form-control"
+                                                   id={{'skill_'.$i.'_hour'}}>
                                         </td>
                                         <td width="15%">
                                             <button onclick="removeSkill(this)"

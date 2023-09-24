@@ -31,25 +31,30 @@
                 @php($prices = json_decode($card->skill_prices))
 
                 <div class="p-2 bd-highlight card shadow-sm"
-                     style="width: 70%; height: 500px">
+                     style="@if($agent->isDesktop()) width: 70%; @else width: 90%; @endif height: 500px">
                     <div class="card-body" style="padding-right: 1px">
                         <div class="row" style="height: 100%; width: 100%">
-                            <div class="col"
-                                 style="height: 100%; display: flex; justify-content: center; align-items: center">
-                                <img class="card-img-left" style="max-width: 100%; max-height: 80%"
-                                     src="{{ asset('storage/cardPhotos/' . $card->photo_card) }}"
-                                     alt="Card image cap">
-                            </div>
-                            <div class="col-5" style="width: 65%; height:100%; padding-right: 1px">
+                            @if($agent->isDesktop())
+                                <div class="col"
+                                     style="height: 100%; width: 35%; display: flex; justify-content: center; align-items: center">
+                                    <img class="card-img-left" style="max-width: 100%; max-height: 80%"
+                                         src="{{ asset('storage/cardPhotos/' . $card->photo_card) }}"
+                                         alt="Card image cap">
+                                </div>
+                            @endif
+                            <div class="col-5"
+                                 style="@if($agent->isDesktop()) width: 65%; @else width: 100%; @endif height:100%; padding-right: 1px">
                                 <div class="row" style="height: 10%">
                                     <b style="font-size: 18px; display: flex; justify-content: center">{{ $card->dream_name }}</b>
                                 </div>
 
-                                <div class="row" style="height: 15%">
-                                    <div class="d-flex justify-content-center bd-highlight mb-1" style="height: 100%">
-                                        <div class="p-2 bd-highlight" style="width: 12%">
-                                            <img class="card-self-photo" style="height: 100%;"
-                                                 src="{{ asset('storage/selfPhoto/' . $card->self_photo)}}">
+                                <div class="row" style="height: 15%; width: 100%">
+                                    <div class="d-flex justify-content-center bd-highlight mb-1"
+                                         style="height: 100%; width: 100%">
+                                        <div class="p-2 bd-highlight" style="width: 12%; min-width: 70px">
+                                            <img class="card-self-photo" style="height: auto;"
+                                                 src="{{ asset('storage/selfPhoto/' . $card->self_photo)}}"
+                                                 alt="Card image cap">
                                         </div>
                                         <div class="p-2 bd-highlight" style="display:flex; vertical-align: middle;">
                                             <p style="font-size: 16px; margin-bottom: auto; margin-top: auto">{{ $card->name }}</p>
@@ -76,8 +81,9 @@
                                         </table>
                                     </div>
                                     @if(sizeof($names) > 3)
-                                        <div class="row" style="height: 15%; display: flex; justify-content: end">
-                                            <i style="width: auto">{{'Ещё '.(sizeof($names) - 3).'...'}}</i>
+                                        <div class="row"
+                                             style="height: 15%; display: flex; justify-content: end">
+                                            <i style="width: auto; font-size: 14px; margin-right: 30px">{{'Ещё '.(sizeof($names) - 3).'...'}}</i>
                                         </div>
                                     @endif
                                 </div>
@@ -89,22 +95,23 @@
                                         <p style="width: auto; margin-left: auto; margin-right: 0">{{$card->collected. ' из '.$card->summa}}</p>
                                     </div>
                                 </div>
-                                <div class="row" style="height: 12%; display: flex; justify-content: end">
-                                    <a class="col-3 text-decoration-none"
-                                       style="display: flex; justify-content: end;  margin-right: 0">
-                                        <button type="button" class="btn btn-dark" aria-label="Close"
-                                                style="margin-bottom: 10px;">
-                                            Отслеживать
-                                        </button>
-                                    </a>
+                                <div class="row" style="height: 12%">
+                                    <div class="d-flex justify-content-end bd-highlight mb-1">
+                                        <a class="pb-2 bd-highlight text-decoration-none">
+                                            <button type="button" class="btn btn-dark" aria-label="Close"
+                                                    style="margin-bottom: 10px; margin-right: 6px">
+                                                Отслеживать
+                                            </button>
+                                        </a>
 
-                                    <a class="col-3 text-decoration-none"
-                                       style="display: flex; justify-content: end;  margin-right: 0">
-                                        <button type="button" class="btn btn-dark" aria-label="Close"
-                                                style="margin-bottom: 10px;">
-                                            Подробнее
-                                        </button>
-                                    </a>
+                                        <a href="{{route('cardMore', ['id' => $card->id])}}"
+                                           class="pb-2 bd-highlight text-decoration-none">
+                                            <button type="button" class="btn btn-dark" aria-label="Close"
+                                                    style="margin-bottom: 10px;">
+                                                Подробнее
+                                            </button>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>

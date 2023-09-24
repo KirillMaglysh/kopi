@@ -65,6 +65,7 @@ class User extends Authenticatable
             'self_photo' => $data['self_photo'],
             'skill_names' => $data['skill_names'],
             'skill_prices' => $data['skill_prices'],
+            'skill_hour' => $data['skill_hour'],
         ]);
     }
 

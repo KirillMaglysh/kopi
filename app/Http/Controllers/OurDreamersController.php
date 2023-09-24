@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
+use Jenssegers\Agent\Agent;
 
 
 class OurDreamersController extends Controller
@@ -26,12 +27,20 @@ class OurDreamersController extends Controller
         $is_filter = false;
         $isAuth = auth()->user() != null;
         $cards = DB::select("
-        SELECT card.user_id, card.photo_card, card.dream_name, card.summa, card.collected, users.self_photo, users.name, users.skill_names, users.skill_prices
+        SELECT card.id, card.user_id, card.photo_card, card.dream_name, card.summa, card.collected, users.self_photo, users.name, users.skill_names, users.skill_prices
         FROM card
-        JOIN users ON users.id = card.user_id;
-        ");
+        JOIN users ON users.id = card.user_id
+        WHERE card.moderation = 1");
 
-        return view('subs/support', compact('cards', 'is_filter', 'isAuth'));
+        $agent = new Agent();
+        return view('subs/support', compact('cards', 'is_filter', 'isAuth', 'agent'));
+    }
+
+    public function cardMore($id)
+    {
+        $card = Card::where('id', $id)->first();
+        $isAuth = auth()->user() != null;
+        return view('subs/cardMore', compact('card', 'isAuth'));
     }
 
     public function dreamersFilter(Request $request)
