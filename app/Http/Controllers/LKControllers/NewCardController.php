@@ -5,11 +5,8 @@ namespace App\Http\Controllers\LKControllers;
 use App\Http\Controllers\Controller;
 use App\Http\Utills\Utilities;
 use App\Models\Card;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 

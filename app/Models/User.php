@@ -39,7 +39,6 @@ class User extends Authenticatable
     protected $info = [
         'tg_link',
         'vk_link',
-        'qr_photo',
         'self_photo'
     ];
 
@@ -64,7 +63,6 @@ class User extends Authenticatable
             'tg_link' => $data['tg_link'],
             'vk_link' => $data['vk_link'],
             'self_photo' => $data['self_photo'],
-            'qr_photo' => $data['qr_photo'],
             'skill_names' => $data['skill_names'],
             'skill_prices' => $data['skill_prices'],
         ]);

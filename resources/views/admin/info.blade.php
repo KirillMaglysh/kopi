@@ -45,18 +45,6 @@
                         <input placeholder="https://vk.com/..." type="url" name="vk_link" class="form-control"
                                id="vk_link" value="{{$user->vk_link}}">
                     </div>
-                    <div class="mb-3">
-                        <div class="row">
-                            <label for="qr_photo" class="form-label">QR-код для оплаты (jpg)</label>
-                        </div>
-
-                        @if ($user->self_photo)
-                            <img id="current_photo" class="card-img-left" width="100px"
-                                 src="{{ asset('storage/cardQrs/' . $user->qr_photo) }}"
-                                 alt="CurrentPhoto.jpg" style="margin-bottom: 10px">
-                        @endif
-                        <input placeholder="" type="file" class="form-control" name="qr_photo" id="qr_photo">
-                    </div>
 
                     <div class="mb-3 skill-table">
                         <label for="skill-table" class="form-label">Ваши скиллы</label>

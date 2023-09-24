@@ -18,15 +18,20 @@ class OurDreamersController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+//        $this->middleware('auth');
     }
 
     public function dreamersNoFilter()
     {
         $is_filter = false;
-        $cards = Card::getModerated();
-        $search_text = '';
-        return view('subs/support', compact('cards', 'is_filter', 'search_text'));
+        $isAuth = auth()->user() != null;
+        $cards = DB::select("
+        SELECT card.user_id, card.photo_card, card.dream_name, card.summa, card.collected, users.self_photo, users.name, users.skill_names, users.skill_prices
+        FROM card
+        JOIN users ON users.id = card.user_id;
+        ");
+
+        return view('subs/support', compact('cards', 'is_filter', 'isAuth'));
     }
 
     public function dreamersFilter(Request $request)
@@ -55,6 +60,7 @@ class OurDreamersController extends Controller
             }
         }
 
-        return view('subs/support', compact('cards', 'is_filter', 'pattern'));
+        $isAuth = auth()->user() != null;
+        return view('subs/support', compact('cards', 'is_filter', 'pattern', 'isAuth'));
     }
 }

@@ -41,7 +41,7 @@
                class="nav-link {{ url()->current() === route('myDreamers') ? 'active' : ''}}">
                 <i class="nav-icon fa-solid fas fa-check"></i>
                 <p>
-                    Мои скиллы
+                    Полученные скиллы
                 </p>
             </a>
 

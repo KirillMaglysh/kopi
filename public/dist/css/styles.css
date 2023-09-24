@@ -12730,6 +12730,31 @@ html {
     color: #009879;
 }
 
+
+.styled-table-mini {
+    border-collapse: collapse;
+    margin: 12px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+}
+
+.styled-table-mini thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+}
+
+.styled-table-mini th,
+.styled-table-mini td {
+    padding: 6px 7px;
+}
+
+.styled-table-mini tbody tr {
+    border-bottom: 1px solid #dddddd;
+    border-top: 1px solid #dddddd;
+}
+
 .btn-close-self {
     width: 50%;
     height: 50%;
@@ -12950,4 +12975,13 @@ html {
     height: 60%;
     float: left;
     margin: 10px 20px 10px 10px;
+}
+
+.card-img-left {
+    vertical-align: middle;
+}
+
+.card-self-photo {
+    width: 100%;
+    border-radius: 50%;
 }
