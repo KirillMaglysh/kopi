@@ -60,7 +60,11 @@ class OurDreamersController extends Controller
             return $this->dreamersNoFilter();
         }
 
-        $allCards = Card::getModerated();
+        $allCards = DB::select("
+        SELECT card.id, card.user_id, card.photo_card, card.dream_name, card.summa, card.collected, users.self_photo, users.name, users.skill_names, users.skill_prices
+        FROM card
+        JOIN users ON users.id = card.user_id
+        WHERE card.moderation = 1");
         $cards = [];
         $is_filter = true;
         foreach ($allCards as $card) {
@@ -70,6 +74,7 @@ class OurDreamersController extends Controller
         }
 
         $isAuth = auth()->user() != null;
-        return view('subs/support', compact('cards', 'is_filter', 'pattern', 'isAuth'));
+        $agent = new Agent();
+        return view('subs/support', compact('cards', 'is_filter', 'pattern', 'isAuth', 'agent'));
     }
 }

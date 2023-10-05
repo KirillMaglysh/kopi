@@ -73,7 +73,7 @@ class User extends Authenticatable
     {
         $names = json_decode(DB::table('users')->find($user_id, 'skill_names')->skill_names);
         foreach ($names as $name) {
-            if (str_contains(strtolower($name), strtolower($pattern))) {
+            if (str_contains(mb_strtolower($name), mb_strtolower($pattern))) {
                 return true;
             }
         }
