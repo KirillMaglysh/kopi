@@ -39,8 +39,10 @@ class OurDreamersController extends Controller
     public function cardMore($id)
     {
         $card = Card::where('id', $id)->first();
+        $user = DB::table('users')->find($card->user_id, ['name', 'tg_link', 'vk_link', 'self_photo', 'skill_names', 'skill_prices', 'skill_hour']);
         $isAuth = auth()->user() != null;
-        return view('subs/cardMore', compact('card', 'isAuth'));
+
+        return view('subs/cardMore', compact('card', 'user', 'isAuth'));
     }
 
     public function dreamersFilter(Request $request)

@@ -12725,11 +12725,37 @@ html {
     border-bottom: 2px solid #009879;
 }
 
-.styled-table tbody tr.active-row {
-    font-weight: bold;
-    color: #009879;
+.styled-table-card-more {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 
+.styled-table-card-more thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: center;
+}
+
+.styled-table-card-more th,
+.styled-table-card-more td {
+    padding: 12px 15px;
+}
+
+.styled-table-card-more tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.styled-table-card-more tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.styled-table-card-more tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
 
 .styled-table-mini {
     border-collapse: collapse;
@@ -12959,6 +12985,16 @@ html {
 
 .mfp-zoom-in.mfp-removing.mfp-bg {
     opacity: 0;
+}
+
+.news-more-canvas {
+    background: white;
+    height: 600px;
+    width: 80%;
+    border-radius: 5%;
+    padding: 20px 15px 20px 15px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .news-more-canvas {
