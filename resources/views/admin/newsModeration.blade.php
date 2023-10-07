@@ -103,12 +103,14 @@
                     </h1>
 
                     <div style="overflow-y: auto; height: 90%">
-                        <p style="height: 100%; text-align :justify; margin-right: 15px">
+                        <p style="height: 85%; text-align :justify; margin-right: 15px">
                             <img
                                 src="{{ asset('storage/newsPhoto/' . $item->photo) }}"
                                 class="news-more-img" alt="Card image cap">
                             {{$item->long_desk}}
                         </p>
+                        @php($dateFormatted = date('d.m.Y', $item->created_at))
+                        <p style="float: right">{{$dateFormatted}}</p>
                     </div>
                 </div>
             @endforeach

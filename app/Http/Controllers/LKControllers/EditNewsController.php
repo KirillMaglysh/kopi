@@ -29,20 +29,21 @@ class EditNewsController extends Controller
 
         $rules = [
             'name' => 'required|string|max:100',
-            'photo' => 'required|file|mimes:jpg,png,jpeg',
             'short_desk' => 'required|string|max:1000',
             'long_desk' => 'required|string|max:3000',
+            'date' => 'required|date_format:Y-m-d'
         ];
         $validator = Validator::make($data, $rules);
-        $edit = true;
 
+        $news = DB::table('news')->where('id', $data['news_id'])->first();
         if ($validator->fails()) {
             $errors = $validator->errors();
-            return view('admin.editNews', compact('errors', 'userId', 'data', 'edit'));
+            $edit = true;
+            return view('admin.editNews', compact('errors', 'news', 'userId', 'data', 'edit'));
         }
 
-        $news = DB::table('news')->where('id', $data['news_id']);
         $data = $this->checkNullable($data, $request, $news);
+        $data['date'] = strtotime($data['date']);
         News::updateNewsInfo($data);
         return redirect()->route('newsModeration');
     }
@@ -58,6 +59,7 @@ class EditNewsController extends Controller
             'photo' => 'nullable|file|mimes:jpg,png,jpeg',
             'short_desk' => 'required|string|max:1000',
             'long_desk' => 'required|string|max:3000',
+            'date' => 'required|string|max:30',
         ];
         $validator = Validator::make($data, $rules);
         $edit = false;
@@ -68,6 +70,7 @@ class EditNewsController extends Controller
         }
 
         $data = Utilities::hashPhoto($request, 'photo', 'newsPhoto', $data);
+        $data['date'] = strtotime($data['date']) * 1000;
         News::insertNews($data);
         return redirect()->route('newsModeration');
     }
@@ -87,5 +90,4 @@ class EditNewsController extends Controller
         }
         return $data;
     }
-
 }

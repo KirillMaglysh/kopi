@@ -45,6 +45,16 @@
                                id="long_desk" @if($edit) value="{{$news->long_desk}}" @endif>
                     </div>
 
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Дата</label>
+                        @if($edit)
+                            @php $dateFormatted = date('Y-m-d', $news->created_at) @endphp
+                        @endif
+                        <div>{{$dateFormatted}}</div>
+                        <input type="date" name="date" class="form-control"
+                               id="date" @if($edit) value="{{$dateFormatted}}" @endif>
+                    </div>
+
                     <button type="submit" class="btn btn-primary">Сохранить</button>
                 </form>
             </div>

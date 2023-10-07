@@ -2,9 +2,9 @@
 
 @section('content')
     @foreach($users as $user)
-        @if ($user['fileSelf'])
+        @if ($user->fileSelf)
             <div>
-                <div class="alert {{ !$user['moderation'] ? 'alert-danger' : 'alert-success'  }} mt-3">
+                <div class="alert {{ !$user->moderation ? 'alert-danger' : 'alert-success'  }} mt-3">
                     <div class="card-body">
                         <h5 class="card-title">ID пользователя: {{ $user->id }}</h5><br>
                         <h6 class="card-title">Имя пользователя: {{ $user->name }}</h6><br>
@@ -14,7 +14,7 @@
                             Справка о самозанятости
                         </button>
                         <a type="submit" href="{{ route('selfSuccess', ['id' => $user->id]) }}" class="text-decoration-none btn btn-success btn-sm mt-2">
-                            {{ !$user['moderation'] ? 'Подтвердить' : 'Уже подтверждено' }}
+                            {{ !$user->moderation ? 'Подтвердить' : 'Уже подтверждено' }}
                         </a>
                     </div>
                 </div>
@@ -26,7 +26,7 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body" align="center">
-                                <img class="card-img-left mt-3" width="300px" src="{{ asset('storage/selfPhoto/' . $user['fileSelf']) }}" alt="Card image cap">
+                                <img class="card-img-left mt-3" width="300px" src="{{ asset('storage/selfPhoto/' . $user->fileSelf) }}" alt="Card image cap">
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

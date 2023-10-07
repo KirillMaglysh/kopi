@@ -27,14 +27,12 @@ class News extends Authenticatable
 
     public static function insertNews($data): bool
     {
-        $date = date_create();
-
         return DB::table('news')->insert([
             'name' => $data['name'],
             'short_desk' => $data['short_desk'],
             'long_desk' => $data['long_desk'],
             'photo' => $data['photo'],
-            'created_at'=>date_timestamp_get($date)
+            'created_at'=> $data['date']
         ]);
     }
 
@@ -45,6 +43,7 @@ class News extends Authenticatable
             'short_desk' => $data['short_desk'],
             'long_desk' => $data['long_desk'],
             'photo' => $data['photo'],
+            'created_at'=> $data['date']
         ]);
     }
 }

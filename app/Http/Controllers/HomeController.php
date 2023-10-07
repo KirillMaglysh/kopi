@@ -62,7 +62,7 @@ class HomeController extends Controller
 
     public function selfModeration()
     {
-        $users = User::all();
+        $users = DB::table("users")->where('moderation', 0)->get();
         return view('admin.selfModeration', compact('users'));
     }
 
