@@ -38,8 +38,11 @@ Route::get('/card', [App\Http\Controllers\LKControllers\MyCardController::class,
 Route::get('/cardSuccess/{id}', [App\Http\Controllers\LKControllers\MyCardController::class, 'cardSuccess'])->name('cardSuccess');
 Route::get('/card/{id}', [App\Http\Controllers\LKControllers\MyCardController::class, 'cardItem'])->name('cardItem');
 Route::get('/support/card/{id}', [App\Http\Controllers\OurDreamersController::class, 'cardMore'])->name('cardMore');
+Route::get('/cardMore/{id}', [App\Http\Controllers\LKControllers\MyCardController::class, 'myCardMore'])->name('myCardMore');
+Route::get('/checkCard/{id}', [App\Http\Controllers\OurDreamersController::class, 'checkCard'])->name('checkCard');
 Route::get('/cardDelete/{id}', [App\Http\Controllers\LKControllers\MyCardController::class, 'cardDelete'])->name('cardDelete');
 Route::get('/myCard', [App\Http\Controllers\LKControllers\MyCardController::class, 'myCard'])->name('myCard');
+Route::post('/changeSum', [App\Http\Controllers\LKControllers\MyCardController::class, 'changeSum'])->name('changeSum');
 Route::post('/cardSave', [App\Http\Controllers\LKControllers\NewCardController::class, 'save'])->name('card.save');
 
 Route::get('/newPartner', [App\Http\Controllers\LKControllers\PartnersController::class, 'newPartner'])->name('newPartner');

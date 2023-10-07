@@ -42,11 +42,6 @@ class Card extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public static function getModerated()
-    {
-        return DB::table('card')->where('moderation', 1)->get();
-    }
-
     public static function insert($data): bool
     {
         return DB::table('card')->insert([

@@ -7,9 +7,7 @@ use App\Models\Card;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Validator;
+use Jenssegers\Agent\Agent;
 
 
 class MyCardController extends Controller
@@ -36,38 +34,52 @@ class MyCardController extends Controller
         }
     }
 
-    public function cardItem($id)
-    {
-        $card = Card::where('id', $id)->first();
-
-        return view('admin.cardItem', compact('card'));
-    }
-
     public function cardDelete($id)
     {
         $cardDeleted = Card::where('id', $id)->delete();
         return redirect()->route('moderation');
     }
 
-    public function myCard(Request $request)
+    public function myCard()
     {
-        $info = $request->info;
         $userId = auth()->user()->id;
-        $cards = Card::where('user_id', $userId)->where('deleted_at', null)->get();
+        $cards = DB::select("
+        SELECT card.id, card.user_id, card.photo_card, card.dream_name, card.summa, card.collected, card.moderation, users.self_photo, users.name, users.skill_names, users.skill_prices
+        FROM card
+        JOIN users ON users.id = card.user_id
+        WHERE user_id = ($userId)");
         $count = count($cards);
-        return view('admin.myCard', compact('cards', 'info', 'count'));
+        $agent = new Agent();
+        return view('admin.myCard', compact('cards', 'count', 'agent'));
+    }
+
+    public function myCardMore($id)
+    {
+        $card = Card::where('id', $id)->first();
+        $user = DB::table('users')->find($card->user_id, ['name', 'tg_link', 'vk_link', 'self_photo', 'skill_names', 'skill_prices', 'skill_hour']);
+        $isAuth = auth()->user() != null;
+        if (!$isAuth || (auth()->user()->id != _ADMIN_ && auth()->user()->id != $card->user_id)) {
+            abort(403);
+        }
+
+        return view('subs/cardMore', compact('card', 'user', 'isAuth'));
     }
 
     public function cardSuccess($id)
     {
-        $card = Card::where('id', $id)->first();
-        Card::where('id', $id)->update([
-            'dream_name' => $card['dream_name'],
-            'description' => $card['description'],
-            'photo_card' => $card['photo_card'],
-            'summa' => $card['summa'],
-            'moderation' => true,
-        ]);
-        return redirect()->route('cardItem', ['id' => $id]);
+        Card::where('id', $id)->update(['moderation' => true,]);
+        return redirect()->route('moderation');
+    }
+
+    public function changeSum(Request $request)
+    {
+        $data = $request->input();
+        $card = Card::where('id', $data['cardId'])->first();
+        if ($card->user_id != auth()->user()->id) {
+            abort(403);
+        }
+
+        Card::where('id', $data['cardId'])->update(['collected' => ($card->collected + $data['dif'])]);
+        return redirect()->route('myCard');
     }
 }

@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Card;
+use App\Http\Utills\Utilities;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Validator;
+use Jenssegers\Agent\Agent;
 
 
 class HomeController extends Controller
@@ -49,20 +47,19 @@ class HomeController extends Controller
     public function selfSave(Request $request)
     {
         $userId = auth()->user()->id;
-        $fileSafe = $request->file("fileSafe");
-        $hashSelf = Hash::make($fileSafe);
-        $hashSelf = str_replace('/', 'a', $hashSelf);
-        Storage::disk('public')->putFileAs('selfPhoto', $fileSafe, $hashSelf);
+        $data = $request->input();
+        $data = Utilities::hashPhoto($request, 'fileSafe', 'docPhoto', $data);
+
         DB::table('users')
             ->where('id', $userId)
-            ->update(['fileSelf' => $hashSelf]);
+            ->update(['fileSelf' => $data['fileSafe']]);
 
         return redirect()->route('self');
     }
 
     public function selfModeration()
     {
-        $users = DB::table("users")->where('moderation', 0)->get();
+        $users = DB::table("users")->orderByDesc('created_at')->get();
         return view('admin.selfModeration', compact('users'));
     }
 
@@ -80,7 +77,12 @@ class HomeController extends Controller
         if (auth()->user()->id !== _ADMIN_) {
             abort(403);
         }
-        $data = Card::all();
-        return view('admin.moderation', compact('data'));
+
+        $cards = DB::select("
+        SELECT card.id, card.user_id, card.photo_card, card.dream_name, card.summa, card.collected, card.moderation, users.self_photo, users.name, users.skill_names, users.skill_prices
+        FROM card
+        JOIN users ON users.id = card.user_id");
+        $agent = new Agent();
+        return view('admin.moderation', compact('cards', 'agent'));
     }
 }
